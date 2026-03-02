@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mikaela Jusi — Social Media Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── PALETTE (from the image) ─── */
+    :root {
+      --olive:   #4a5c2f;
+      --cream:   #f5f0e8;
+      --lavender:#d9c9e8;
+      --lilac:   #c4a8dc;
+      --black:   #1a1a1a;
+      --yellow:  #e8e053;
+      --blue-scallop: #b8cfea;
+      --marquee-bg: #1a1a1a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: var(--olive);
+      border-bottom: 2px solid #3a4c22;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--black) !important;
+      padding: 0.45rem 1rem;
+      border-radius: 99px;
+      border: 2px solid var(--black);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--olive);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+      background: var(--cream);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    /* wavy bottom */
+    .wave-divider {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 80px; overflow: hidden;
+    }
+
+    .hero-text { color: var(--cream); position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      margin-bottom: 0.2rem;
+    }
+    .hero-title em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--yellow);
+    }
+    .hero-sub {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 1.5rem 0 2rem;
+      opacity: 0.85;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+      padding: 0.8rem 1.8rem;
+      border-radius: 99px;
+      border: 2px solid var(--black);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 3px 3px 0 var(--black); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      padding: 0.8rem 1.8rem;
+      border-radius: 99px;
+      border: 2px solid var(--cream);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .btn-secondary:hover { transform: translateY(-2px); }
+
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-card {
+      width: 300px;
+      background: var(--cream);
+      border-radius: 16px;
+      border: 3px solid var(--black);
+      padding: 2rem;
+      box-shadow: 6px 6px 0 var(--black);
+      transform: rotate(2deg);
+    }
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+    .stat-row { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem; }
+    .stat {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--olive);
+    }
+    .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+    .badge {
+      display: inline-block;
+      background: var(--lavender);
+      border: 2px solid var(--black);
+      border-radius: 99px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      background: var(--marquee-bg);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 2px solid #333;
+      border-bottom: 2px solid #333;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: scroll-left 22s linear infinite;
+    }
+    .marquee-track span {
+      color: var(--cream);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0 2rem;
+    }
+    .marquee-track span.dot { color: var(--yellow); font-size: 1rem; }
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--cream);
+      padding: 6rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--olive);
+      margin-bottom: 0.5rem;
+    }
+    .about-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .about-heading em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-decoration-thickness: 4px;
+    }
+    .about-body { font-size: 0.95rem; line-height: 1.8; color: #444; max-width: 480px; }
+    .about-body p + p { margin-top: 1rem; }
+
+    .about-visual { position: relative; }
+    .polaroid-stack { position: relative; width: 280px; margin: 0 auto; }
+    .polaroid {
+      background: white;
+      border: 3px solid var(--black);
+      padding: 1.2rem 1.2rem 3rem;
+      box-shadow: 5px 5px 0 var(--black);
+      position: absolute;
+      width: 260px;
+    }
+    .polaroid:nth-child(1) { transform: rotate(-4deg); top: 0; left: 0; z-index: 1; }
+    .polaroid:nth-child(2) { transform: rotate(3deg); top: 20px; left: 30px; z-index: 2; }
+    .polaroid-img {
+      width: 100%; aspect-ratio: 1; background: var(--lavender);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .polaroid-caption {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+    /* extra height for stack */
+    .polaroid-stack-wrap { height: 360px; display: flex; align-items: center; justify-content: center; }
+
+    /* ─── SKILLS ─── */
+    .skills-section {
+      background: var(--lavender);
+      padding: 5rem 4rem;
+      text-align: center;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .section-heading em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .skill-card {
+      background: var(--cream);
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: left;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-4px); }
+    .skill-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .skill-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .skill-card p { font-size: 0.82rem; line-height: 1.6; color: #555; }
+
+    /* ─── EXPERIENCE ─── */
+    .experience {
+      background: var(--cream);
+      padding: 6rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .exp-header { margin-bottom: 3rem; }
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .exp-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      border-left: 4px solid var(--olive);
+      padding-left: 2rem;
+      position: relative;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: -10px; top: 0.35rem;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--olive);
+      border: 3px solid var(--cream);
+      outline: 2px solid var(--olive);
+    }
+    .exp-date {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: #777;
+      padding-top: 0.2rem;
+    }
+    .exp-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 0.2rem;
+    }
+    .exp-company {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--olive);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .exp-bullets li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #444;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--olive);
+      font-weight: 700;
+    }
+    .exp-tag {
+      display: inline-block;
+      background: var(--yellow);
+      border: 1.5px solid var(--black);
+      border-radius: 99px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-right: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    /* ─── TOOLS ─── */
+    .tools-section {
+      background: var(--olive);
+      padding: 5rem 4rem;
+      text-align: center;
+    }
+    .tools-section .section-heading { color: var(--cream); }
+    .tools-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+      max-width: 800px; margin: 2.5rem auto 0;
+    }
+    .tool-pill {
+      background: var(--cream);
+      border: 2px solid var(--black);
+      border-radius: 99px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--black);
+      transition: transform 0.2s;
+    }
+    .tool-pill:hover { transform: translateY(-2px); }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--lavender);
+      padding: 6rem 4rem;
+      text-align: center;
+    }
+    .contact .section-heading { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+    .contact-sub { font-size: 1rem; color: #555; margin: 1rem 0 2.5rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--cream);
+      border: 2px solid var(--black);
+      border-radius: 99px;
+      padding: 0.7rem 1.5rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--black);
+      box-shadow: 3px 3px 0 var(--black);
+      transition: transform 0.2s;
+    }
+    .contact-link:hover { transform: translateY(-3px); }
+    .contact-link.primary {
+      background: var(--olive);
+      color: var(--cream);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    footer span { color: var(--yellow); }
+
+    /* ─── WAVY SECTION DIVIDER ─── */
+    .wavy {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wavy svg { display: block; }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 6rem 2rem 5rem; }
+      .hero-visual { display: none; }
+      .about { grid-template-columns: 1fr; padding: 4rem 2rem; }
+      .about-visual { display: none; }
+      .exp-card { grid-template-columns: 1fr; }
+      .experience, .skills-section, .tools-section, .contact { padding: 4rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MIKAELA JUSI</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Services</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Work</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Social Media Manager · Content Strategist</p>
+    <h1 class="hero-title">
+      The Strategy<br>
+      <em>behind</em> your<br>
+      next viral moment.
+    </h1>
+    <p class="hero-sub">
+      3+ years growing engagement and brand presence for lifestyle and hospitality businesses in Toronto. From content calendars to paid ads — I make it work.
+    </p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary">See My Work</a>
+      <a href="#contact" class="btn-secondary">Let's Connect</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-in">
+    <div class="hero-card">
+      <div class="badge">📍 Toronto, ON</div>
+      <h3>Mikaela Jusi</h3>
+      <div class="stat-row">
+        <div class="stat">
+          <div>
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <div class="stat-num">+12%</div>
+            <div class="stat-label">Instagram Engagement Growth</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <div class="stat-num">+14%</div>
+            <div class="stat-label">Client Sign-Up Increase</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Staff Managed & Trained</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Content Strategy</span><span class="dot">✦</span>
+    <span>Meta Ads</span><span class="dot">✦</span>
+    <span>Short-Form Video</span><span class="dot">✦</span>
+    <span>Community Growth</span><span class="dot">✦</span>
+    <span>Brand Voice</span><span class="dot">✦</span>
+    <span>Influencer Partnerships</span><span class="dot">✦</span>
+    <span>Analytics & Reporting</span><span class="dot">✦</span>
+    <span>Copywriting</span><span class="dot">✦</span>
+    <span>Content Strategy</span><span class="dot">✦</span>
+    <span>Meta Ads</span><span class="dot">✦</span>
+    <span>Short-Form Video</span><span class="dot">✦</span>
+    <span>Community Growth</span><span class="dot">✦</span>
+    <span>Brand Voice</span><span class="dot">✦</span>
+    <span>Influencer Partnerships</span><span class="dot">✦</span>
+    <span>Analytics & Reporting</span><span class="dot">✦</span>
+    <span>Copywriting</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="fade-in">
+    <p class="about-label">A little about me</p>
+    <h2 class="about-heading">
+      I traded quick content for <em>timeless strategy.</em>
+    </h2>
+    <div class="about-body">
+      <p>
+        Hi, I'm Mikaela — a result-driven Social Media Manager with 3+ years of experience growing engagement and brand presence for lifestyle and hospitality businesses across the GTA.
+      </p>
+      <p>
+        I'm skilled in content strategy, short-form video production, and community building — and I care deeply about making brands feel <em>real</em> online. Not just pretty, but purposeful.
+      </p>
+      <p>
+        From building videography teams and launching merchandise campaigns to managing multi-location expansions and Meta ad budgets, I bring both the creative and the operational.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-visual fade-in">
+    <div class="polaroid-stack-wrap">
+      <div class="polaroid-stack">
+        <div class="polaroid" style="position:relative;transform:rotate(-3deg);margin-bottom:1.5rem;">
+          <div class="polaroid-img">📱</div>
+          <div class="polaroid-caption">content day ✨</div>
+        </div>
+        <div class="polaroid" style="transform:rotate(3deg);margin-top:1rem;">
+          <div class="polaroid-img">🎬</div>
+          <div class="polaroid-caption">behind the lens 🎥</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--cream);">
+    <path d="M0,30 C180,60 360,0 540,30 C720,60 900,0 1080,30 C1260,60 1350,15 1440,30 L1440,60 L0,60 Z" fill="#d9c9e8"/>
+  </svg>
+</div>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <p class="about-label" style="color:#6b4a8c;">What I bring to the table</p>
+  <h2 class="section-heading">Services <em>&amp; Skills</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📊</div>
+      <h4>Content Strategy</h4>
+      <p>Multi-platform content calendars, campaign planning, and brand voice development tailored to your audience and business goals.</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🎬</div>
+      <h4>Short-Form Video</h4>
+      <p>Reels, TikToks, and branded video content optimized for engagement and audience retention — built to stop the scroll.</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📣</div>
+      <h4>Meta Ads Management</h4>
+      <p>Launching and optimizing paid campaigns across Facebook and Instagram, monitoring KPIs and ad spend for maximum ROI.</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">✍️</div>
+      <h4>SEO Copywriting</h4>
+      <p>Captions, bios, and web copy that sound like you — with the strategy behind them to improve discoverability and conversions.</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🤝</div>
+      <h4>Influencer Partnerships</h4>
+      <p>Coordinating creator collabs and media partnerships to expand your brand reach and build social proof authentically.</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📈</div>
+      <h4>Analytics & Reporting</h4>
+      <p>Clear, actionable reports on what's working — and a strategy pivot plan for what isn't. Data-driven growth, always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--lavender);">
+    <path d="M0,30 C180,0 360,60 540,30 C720,0 900,60 1080,30 C1260,0 1350,45 1440,30 L1440,60 L0,60 Z" fill="var(--cream)"/>
+  </svg>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="exp-header fade-in">
+    <p class="about-label">Where I've been</p>
+    <h2 class="section-heading">Work <em>Experience</em></h2>
+  </div>
+
+  <div class="timeline">
+
+    <div class="exp-card fade-in">
+      <div class="exp-date">Jan 2024 – May 2025</div>
+      <div class="exp-content">
+        <h3>Social Media Manager &amp; Asst. Facility Manager</h3>
+        <div class="exp-company">The Underground Dance Centre · Toronto · @theundergrounddancecentre</div>
+        <ul class="exp-bullets">
+          <li>Developed and executed multi-platform content strategy across Instagram, TikTok, Facebook, and Google aligned with program launches.</li>
+          <li>Increased Instagram engagement by <strong>12%</strong> within 6 months through short-form video optimization and audience retention strategy.</li>
+          <li>Spearheaded 6-week promotional campaign, driving a <strong>14% increase</strong> in client sign-ups.</li>
+          <li>Launched and optimized Meta ad campaigns, monitoring KPIs and ad spend to improve reach and conversion performance.</li>
+          <li>Built and led an internal videography team, implementing a scalable content production workflow.</li>
+          <li>Directed a merchandise launch strategy including photoshoot production and Shopify promotion.</li>
+          <li>Collaborated with a team of 100+ staff members to maintain brand consistency and studio efficiency.</li>
+        </ul>
+        <div>
+          <span class="exp-tag">Meta Ads</span>
+          <span class="exp-tag">Video Production</span>
+          <span class="exp-tag">Team Leadership</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-date">Oct 2022 – Dec 2024</div>
+      <div class="exp-content">
+        <h3>Social Media Manager &amp; Store Manager</h3>
+        <div class="exp-company">Unholy Donuts · Toronto · @unholydonutscanada</div>
+        <ul class="exp-bullets">
+          <li>Led social media strategy during a multi-location expansion across the GTA.</li>
+          <li>Conducted competitor, hashtag, and trend research to improve discoverability and search performance.</li>
+          <li>Coordinated influencer partnerships and media collaborations to expand brand awareness.</li>
+          <li>Spearheaded the opening of a second location near CF Toronto Eaton Centre.</li>
+          <li>Managed and trained 20+ staff members and implemented operational systems.</li>
+          <li>Oversaw production workflow, catering operations, vendor coordination, and inventory management.</li>
+        </ul>
+        <div>
+          <span class="exp-tag">Influencer Collab</span>
+          <span class="exp-tag">Multi-Location Growth</span>
+          <span class="exp-tag">Operations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-date">Jan 2025 – Present</div>
+      <div class="exp-content">
+        <h3>Freelance Social Media Manager</h3>
+        <div class="exp-company">Toronto-Based Small Businesses</div>
+        <ul class="exp-bullets">
+          <li>Created and developed content strategy and marketing plans for small Toronto-based businesses.</li>
+          <li>Copywriting for captions and website sale set-up.</li>
+          <li>Managed all event volunteers and ensured smooth show running behind the scenes.</li>
+        </ul>
+        <div>
+          <span class="exp-tag">Freelance</span>
+          <span class="exp-tag">Strategy</span>
+          <span class="exp-tag">Copywriting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-date">2018 – 2021</div>
+      <div class="exp-content">
+        <h3>Diploma in Baking &amp; Pastry Arts Management</h3>
+        <div class="exp-company">George Brown College · Toronto</div>
+        <ul class="exp-bullets">
+          <li>Foundation in operations, production workflow, and management — skills that now inform how I build systems for brands.</li>
+        </ul>
+        <div>
+          <span class="exp-tag">Education</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--cream);">
+    <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,0 1440,20 L1440,60 L0,60 Z" fill="var(--olive)"/>
+  </svg>
+</div>
+
+<!-- TOOLS -->
+<section class="tools-section">
+  <p class="about-label" style="color:var(--yellow);">My toolkit</p>
+  <h2 class="section-heading">Tools I <em>Use Daily</em></h2>
+  <div class="tools-grid">
+    <div class="tool-pill">📘 Meta Business Suite</div>
+    <div class="tool-pill">🎞️ CapCut</div>
+    <div class="tool-pill">🎨 Canva</div>
+    <div class="tool-pill">📅 Later</div>
+    <div class="tool-pill">📂 Google Workspace</div>
+    <div class="tool-pill">📋 Notion</div>
+    <div class="tool-pill">🗓️ Hootsuite</div>
+    <div class="tool-pill">🛍️ Shopify</div>
+    <div class="tool-pill">📊 Instagram Analytics</div>
+    <div class="tool-pill">🎬 TikTok Creator Studio</div>
+  </div>
+</section>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--olive);">
+    <path d="M0,40 C360,0 720,60 1080,20 C1260,0 1380,40 1440,30 L1440,60 L0,60 Z" fill="var(--lavender)"/>
+  </svg>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="about-label" style="color:#6b4a8c;">Ready to grow?</p>
+  <h2 class="section-heading">Let's <em>work together.</em></h2>
+  <p class="contact-sub">Whether you need a full strategy overhaul or just a scroll-stopping Reel — I'm your person.</p>
+  <div class="contact-links">
+    <a href="mailto:madebymikaelaa@gmail.com" class="contact-link primary">✉️ madebymikaelaa@gmail.com</a>
+    <a href="tel:+16474465404" class="contact-link">📞 (647) 446-5404</a>
+    <a href="https://linkedin.com" target="_blank" class="contact-link">💼 LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Mikaela Jusi</span> · Social Media Manager · Toronto, ON</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

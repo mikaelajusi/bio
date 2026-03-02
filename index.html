@@ -2,246 +2,305 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikaela Jusi - Social Media Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mikaela Jusi — Social Media Manager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Vibrant color palette from inspiration image */
+        /* Custom Font - Stella Aesta */
+        @font-face {
+            font-family: 'Stella Aesta';
+            src: url('https://cdn.jsdelivr.net/gh/fontshare/fonts@latest/fonts/stella-aesta/StellaAesta-Regular.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/fontshare/fonts@latest/fonts/stella-aesta/StellaAesta-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* ─── PALETTE ─── */
         :root {
-            --burgundy: #3D1616;
-            --dark-burgundy: #2B0F0F;
-            --cream: #F5ECD7;
-            --light-cream: #FBF7F0;
-            --rose-pink: #E5C4B5;
-            --coral-pink: #F4D8D8;
-            --sage: #B5C5AD;
-            --terra: #C17B6B;
-            --text-dark: #2B2B2B;
-            --text-light: #FFF8F0;
+            --chocolate-cosmos: #591427;
+            --cream:   #f5f0e8;
+            --pastel-blue: #C1DBE8;
+            --buttermilk: #FFF1B5;
+            --black:   #1a1a1a;
+            --olive:   #591427;
+            --yellow:  #FFF1B5;
+            --lavender: #C1DBE8;
+            --marquee-bg: #1a1a1a;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Jost', sans-serif;
-            background-color: var(--light-cream);
-            color: var(--text-dark);
-            line-height: 1.7;
+            background: var(--cream);
+            color: var(--black);
+            font-family: 'Nunito', sans-serif;
             overflow-x: hidden;
         }
-        
-        /* Hero Header */
-        header {
-            background: linear-gradient(135deg, var(--burgundy) 0%, var(--dark-burgundy) 100%);
-            color: var(--text-light);
-            padding: 4rem 2rem;
-            text-align: center;
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 2.5rem;
+            background: var(--chocolate-cosmos);
+            border-bottom: 2px solid #3a1019;
+        }
+        .nav-logo {
+            font-family: 'Stella Aesta', 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--cream);
+            letter-spacing: 0.05em;
+        }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--buttermilk); }
+        .nav-cta {
+            background: var(--buttermilk);
+            color: var(--black) !important;
+            padding: 0.45rem 1rem;
+            border-radius: 99px;
+            border: 2px solid var(--black);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            background: var(--chocolate-cosmos);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 7rem 4rem 4rem;
             position: relative;
             overflow: hidden;
         }
-        
-        header::before {
+        .hero::after {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-            opacity: 0.3;
+            position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+            background: var(--cream);
+            clip-path: ellipse(55% 100% at 50% 100%);
         }
-        
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-        
-        header h2 {
-            font-family: 'Jost', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
+
+        .hero-text { color: var(--cream); position: relative; z-index: 1; }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--coral-pink);
+            font-weight: 600;
+            color: var(--buttermilk);
+            margin-top: 1rem;
             margin-bottom: 1.5rem;
         }
-        
-        .header-tagline {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.95;
-            line-height: 1.8;
+        .hero-title {
+            font-family: 'Stella Aesta', 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.0;
+            margin-bottom: 0.2rem;
         }
-        
-        /* Navigation */
-        nav {
-            background: var(--cream);
-            padding: 1rem 2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
+        .hero-title em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--buttermilk);
         }
-        
-        nav a {
-            margin: 0 1.5rem;
-            color: var(--burgundy);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
+        .hero-sub {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 1.5rem 0 2rem;
+            opacity: 0.85;
+        }
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--buttermilk);
+            color: var(--black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 99px;
+            border: 2px solid var(--black);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 3px 3px 0 var(--black); }
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            padding: 0.8rem 1.8rem;
+            border-radius: 99px;
+            border: 2px solid var(--cream);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .btn-secondary:hover { transform: translateY(-2px); }
+
+        .hero-visual {
+            display: flex; justify-content: center; align-items: center;
+            position: relative; z-index: 1;
+        }
+        .profile-image-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--buttermilk);
+            box-shadow: 8px 8px 0 var(--black);
+            transition: transform 0.3s ease;
+        }
+        .profile-image:hover {
+            transform: rotate(3deg) scale(1.02);
+        }
+
+        /* ─── MARQUEE ─── */
+        .marquee-wrap {
+            background: var(--marquee-bg);
+            padding: 0.9rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+        }
+        .marquee-track {
             display: inline-block;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
+            animation: scroll-left 22s linear infinite;
         }
-        
-        nav a:hover {
-            color: var(--terra);
-            border-bottom-color: var(--terra);
+        .marquee-track span {
+            color: var(--cream);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin: 0 2rem;
         }
-        
-        /* About Section */
-        #about {
-            background: linear-gradient(to bottom, var(--light-cream) 0%, rgba(229, 196, 181, 0.3) 100%);
-            padding: 5rem 2rem;
+        .marquee-track span.dot { color: var(--buttermilk); font-size: 1rem; }
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
         }
-        
-        .about-container {
+
+        /* ─── ABOUT ─── */
+        .about {
+            background: var(--cream);
+            padding: 6rem 4rem;
+            text-align: center;
             max-width: 1000px;
             margin: 0 auto;
-            text-align: center;
         }
-        
-        .about-container h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--burgundy);
-            margin-bottom: 2rem;
+        .about-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--chocolate-cosmos);
+            margin-bottom: 0.5rem;
         }
-        
-        .about-container h3 em {
-            font-style: italic;
-            color: var(--terra);
-        }
-        
-        .about-text {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .about-text p {
-            font-size: 1.15rem;
+        .about-heading {
+            font-family: 'Stella Aesta', 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
             margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            line-height: 1.9;
         }
-        
-        .about-text p strong {
-            color: var(--burgundy);
-            font-weight: 600;
+        .about-heading em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            text-decoration: underline;
+            text-decoration-color: var(--buttermilk);
+            text-decoration-thickness: 4px;
         }
-        
-        /* Gallery Section */
-        #gallery {
-            background: var(--light-cream);
-            padding: 5rem 2rem;
+        .about-body { font-size: 0.95rem; line-height: 1.8; color: #444; max-width: 700px; margin: 0 auto; }
+        .about-body p + p { margin-top: 1rem; }
+
+        /* ─── GALLERY ─── */
+        .gallery-section {
+            background: var(--pastel-blue);
+            padding: 5rem 4rem;
         }
-        
-        .gallery-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .gallery-container h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--burgundy);
+        .gallery-container { max-width: 1400px; margin: 0 auto; }
+        .section-heading {
+            font-family: 'Stella Aesta', 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 0.5rem;
             text-align: center;
-            margin-bottom: 3rem;
         }
-        
+        .section-heading em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
         .gallery-tabs {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
             flex-wrap: wrap;
         }
-        
         .gallery-tab {
-            padding: 0.75rem 2rem;
-            background: white;
-            border: 2px solid var(--terra);
-            color: var(--burgundy);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border-radius: 30px;
+            background: var(--cream);
+            border: 2px solid var(--black);
+            border-radius: 99px;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+            transition: all 0.2s;
+            box-shadow: 3px 3px 0 var(--black);
         }
-        
-        .gallery-tab:hover {
-            background: var(--terra);
-            color: white;
+        .gallery-tab:hover, .gallery-tab.active {
+            background: var(--chocolate-cosmos);
+            color: var(--cream);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        
-        .gallery-tab.active {
-            background: var(--burgundy);
-            border-color: var(--burgundy);
-            color: white;
-        }
-        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2rem;
         }
-        
         .gallery-item {
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border: 3px solid var(--black);
             cursor: pointer;
             transition: all 0.3s ease;
             aspect-ratio: 1;
+            box-shadow: 5px 5px 0 var(--black);
         }
-        
         .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            transform: translateY(-5px);
         }
-        
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-        
         .gallery-item-overlay {
             position: absolute;
             bottom: 0;
@@ -253,17 +312,10 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
         .gallery-item:hover .gallery-item-overlay {
             opacity: 1;
         }
-        
-        .gallery-item-overlay p {
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-        }
-        
+
         /* Lightbox */
         .lightbox {
             display: none;
@@ -276,30 +328,13 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s ease;
         }
-        
-        .lightbox.active {
-            display: flex;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
+        .lightbox.active { display: flex; }
         .lightbox-content {
             max-width: 90%;
             max-height: 90%;
             position: relative;
-            animation: zoomIn 0.3s ease;
         }
-        
-        @keyframes zoomIn {
-            from { transform: scale(0.8); }
-            to { transform: scale(1); }
-        }
-        
         .lightbox-content img {
             max-width: 100%;
             max-height: 90vh;
@@ -307,14 +342,13 @@
             border-radius: 8px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
-        
         .lightbox-close {
             position: absolute;
             top: -50px;
             right: 0;
-            background: white;
-            color: var(--burgundy);
-            border: none;
+            background: var(--buttermilk);
+            color: var(--black);
+            border: 2px solid var(--black);
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -326,20 +360,16 @@
             justify-content: center;
             font-weight: bold;
         }
-        
         .lightbox-close:hover {
-            background: var(--terra);
-            color: white;
             transform: rotate(90deg);
         }
-        
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            color: var(--burgundy);
-            border: none;
+            background: var(--buttermilk);
+            color: var(--black);
+            border: 2px solid var(--black);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -351,703 +381,609 @@
             justify-content: center;
             font-weight: bold;
         }
-        
         .lightbox-nav:hover {
-            background: white;
             transform: translateY(-50%) scale(1.1);
         }
-        
-        .lightbox-prev {
-            left: 20px;
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        /* ─── WAVY DIVIDER ─── */
+        .wavy {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
         }
-        
-        .lightbox-next {
-            right: 20px;
-        }
-        
-        .lightbox-caption {
-            position: absolute;
-            bottom: -60px;
-            left: 0;
-            right: 0;
-            color: white;
-            text-align: center;
-            font-size: 1rem;
-            padding: 1rem;
-        }
-        
-        /* Portfolio Section */
-        #portfolio {
-            background: linear-gradient(135deg, var(--sage) 0%, rgba(181, 197, 173, 0.7) 100%);
-            padding: 5rem 2rem;
-        }
-        
-        .portfolio-container {
+        .wavy svg { display: block; }
+
+        /* ─── EXPERIENCE ─── */
+        .experience {
+            background: var(--cream);
+            padding: 6rem 4rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .portfolio-container h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--burgundy);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .portfolio-grid {
+        .timeline { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+        .exp-card {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: 180px 1fr;
             gap: 2rem;
-        }
-        
-        .portfolio-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: all 0.4s ease;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.08);
-        }
-        
-        .portfolio-caption {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .portfolio-caption h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--burgundy);
-            margin-bottom: 0.5rem;
-        }
-        
-        .portfolio-caption p {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* Experience Section */
-        #experience {
-            background: var(--light-cream);
-            padding: 5rem 2rem;
-        }
-        
-        .experience-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .experience-container h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--burgundy);
-            margin-bottom: 3rem;
-            text-align: center;
+            border-left: 4px solid var(--chocolate-cosmos);
+            padding-left: 2rem;
             position: relative;
         }
-        
-        .experience-container h3::after {
+        .exp-card::before {
             content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--terra);
-            margin: 1rem auto 0;
-            border-radius: 2px;
+            position: absolute;
+            left: -10px; top: 0.35rem;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            background: var(--chocolate-cosmos);
+            border: 3px solid var(--cream);
+            outline: 2px solid var(--chocolate-cosmos);
         }
-        
-        .job {
-            margin-bottom: 2.5rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            border-left: 5px solid var(--terra);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .job:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-        
-        .job h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--burgundy);
-            margin-bottom: 0.5rem;
-        }
-        
-        .job-date {
-            color: #666;
+        .exp-date {
+            font-family: 'Instrument Serif', serif;
             font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            color: #777;
+            padding-top: 0.2rem;
         }
-        
-        .job ul {
-            list-style: none;
-            padding-left: 0;
+        .exp-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 0.2rem;
         }
-        
-        .job li {
-            padding-left: 1.8rem;
+        .exp-company {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--chocolate-cosmos);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 0.8rem;
-            position: relative;
-            line-height: 1.7;
         }
-        
-        .job li::before {
+        .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .exp-bullets li {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #444;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .exp-bullets li::before {
             content: '→';
             position: absolute;
             left: 0;
-            color: var(--terra);
-            font-weight: bold;
-            font-size: 1.2rem;
+            color: var(--chocolate-cosmos);
+            font-weight: 700;
         }
-        
-        /* Tools Section */
-        #tools {
-            background: linear-gradient(135deg, var(--burgundy) 0%, var(--dark-burgundy) 100%);
-            padding: 5rem 2rem;
-            color: var(--text-light);
-            position: relative;
-            overflow: hidden;
+        .exp-tag {
+            display: inline-block;
+            background: var(--buttermilk);
+            border: 1.5px solid var(--black);
+            border-radius: 99px;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-right: 0.4rem;
+            margin-top: 0.8rem;
         }
-        
-        #tools::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots2)"/></svg>');
-            opacity: 0.5;
-        }
-        
-        .tools-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .tools-container h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+
+        /* ─── TOOLS ─── */
+        .tools-section {
+            background: var(--chocolate-cosmos);
+            padding: 5rem 4rem;
             text-align: center;
-            margin-bottom: 3rem;
-            color: var(--cream);
         }
-        
+        .tools-section .section-heading { color: var(--cream); }
         .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.2rem;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+            max-width: 800px; margin: 2.5rem auto 0;
         }
-        
-        .tool-badge {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 1.2rem;
-            border-radius: 12px;
+        .tool-pill {
+            background: var(--cream);
+            border: 2px solid var(--black);
+            border-radius: 99px;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 3px 3px 0 var(--black);
+            transition: transform 0.2s;
+        }
+        .tool-pill:hover { transform: translateY(-2px); }
+
+        /* ─── CONTACT ─── */
+        .contact {
+            background: var(--pastel-blue);
+            padding: 6rem 4rem;
             text-align: center;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease;
         }
-        
-        .tool-badge:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        /* Contact Section */
-        #contact {
-            background: linear-gradient(to bottom, var(--rose-pink) 0%, var(--coral-pink) 100%);
-            padding: 5rem 2rem;
-        }
-        
-        .contact-container {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            background: white;
-            padding: 3.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .contact-container h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--burgundy);
-            margin-bottom: 2rem;
-        }
-        
-        .contact-info {
-            font-size: 1.1rem;
-            line-height: 2.2;
-        }
-        
-        .contact-info p {
-            margin: 1rem 0;
-        }
-        
-        .contact-info a {
-            color: var(--terra);
+        .contact .section-heading { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        .contact-sub { font-size: 1rem; color: #555; margin: 1rem 0 2.5rem; }
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .contact-link {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: var(--cream);
+            border: 2px solid var(--black);
+            border-radius: 99px;
+            padding: 0.7rem 1.5rem;
+            font-weight: 700;
+            font-size: 0.85rem;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
+            color: var(--black);
+            box-shadow: 3px 3px 0 var(--black);
+            transition: transform 0.2s;
         }
-        
-        .contact-info a:hover {
-            color: var(--burgundy);
-            border-bottom-color: var(--burgundy);
+        .contact-link:hover { transform: translateY(-3px); }
+        .contact-link.primary {
+            background: var(--chocolate-cosmos);
+            color: var(--cream);
         }
-        
-        /* Footer */
+
+        /* ─── FOOTER ─── */
         footer {
-            background: var(--dark-burgundy);
+            background: var(--black);
             color: var(--cream);
             text-align: center;
-            padding: 2.5rem 2rem;
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
+            padding: 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
         }
-        
-        /* Responsive Design */
+        footer span { color: var(--buttermilk); }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
-            header {
-                padding: 4rem 2rem 3rem;
-            }
-            
-            .profile-image {
-                width: 140px;
-                height: 140px;
-            }
-            
-            header h1 {
-                font-size: 2.5rem;
-            }
-            
-            header h2 {
-                font-size: 1rem;
-                letter-spacing: 0.2em;
-            }
-            
-            .header-tagline {
-                font-size: 1rem;
-            }
-            
-            .about-container h3,
-            .portfolio-container h3,
-            .experience-container h3,
-            .tools-container h3,
-            .contact-container h3 {
-                font-size: 2.2rem;
-            }
-            
-            .gallery-container h3 {
-                font-size: 2.2rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 1rem;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            nav {
-                padding: 1rem;
-            }
-            
-            nav a {
-                display: inline-block;
-                margin: 0.5rem 0.8rem;
-                font-size: 0.85rem;
-            }
-            
-            .tools-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .lightbox-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-            
-            .lightbox-prev {
-                left: 10px;
-            }
-            
-            .lightbox-next {
-                right: 10px;
-            }
-            
-            .job {
-                padding: 1.5rem;
-            }
+            .hero { grid-template-columns: 1fr; padding: 6rem 2rem 5rem; }
+            .hero-visual { margin-top: 2rem; }
+            .profile-image-container { width: 250px; height: 250px; margin: 0 auto; }
+            .experience, .gallery-section, .tools-section, .contact { padding: 4rem 2rem; }
+            .exp-card { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="hero-content">
-            <img src="./BIO.JPG?v=2" alt="Mikaela Jusi" class="profile-image">
-            <h1>MIKAELA JUSI</h1>
-            <h2>Social Media Manager & Content Strategist</h2>
-            <p class="header-tagline">Bringing brands to life through strategic storytelling, creative content, and data-driven engagement</p>
-        </div>
-    </header>
-    
-    <nav>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#experience">Experience</a>
-        <a href="#tools">Tools</a>
-        <a href="#contact">Contact</a>
-    </nav>
 
-    <section id="about">
-        <div class="about-container">
-            <h3>About <em>me</em></h3>
-            <div class="about-text">
-                <p>Result-driven Social Media Manager with <strong>3+ years</strong> of experience growing engagement and brand presence for lifestyle and hospitality businesses.</p>
-                <p>Skilled in content strategy, short-form video production, and community building. Experienced in managing content calendars, analytics reporting, and brand voice development across multiple platforms.</p>
-                <p>My journey combines creative expertise from pastry arts with data-driven social media strategy, bringing a unique visual perspective to digital storytelling.</p>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">MIKAELA JUSI</div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact" class="nav-cta">Let's Work</a></li>
+    </ul>
+</nav>
 
-    <section id="gallery">
-        <div class="gallery-container">
-            <h3>Creative Gallery</h3>
-            <div class="gallery-tabs">
-                <button class="gallery-tab active" data-category="all">All Work</button>
-                <button class="gallery-tab" data-category="dance">Dance Studio</button>
-                <button class="gallery-tab" data-category="food">Food Content</button>
-            </div>
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- UDEC Pictures -->
-                <div class="gallery-item" data-category="dance" data-index="0">
-                    <img src="model_picture_1.jpg" alt="Underground Dance Centre - Model Photography 1">
-                    <div class="gallery-item-overlay">
-                        <p>Underground Dance Centre</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="dance" data-index="1">
-                    <img src="model_picture_2.jpg" alt="Underground Dance Centre - Model Photography 2">
-                    <div class="gallery-item-overlay">
-                        <p>Underground Dance Centre</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="dance" data-index="2">
-                    <img src="model_picture_two.jpg" alt="Underground Dance Centre - Model Photography 3">
-                    <div class="gallery-item-overlay">
-                        <p>Underground Dance Centre</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="dance" data-index="3">
-                    <img src="instagram_page_overview.PNG" alt="Instagram Management Overview">
-                    <div class="gallery-item-overlay">
-                        <p>Instagram Management</p>
-                    </div>
-                </div>
-                <!-- Donut Pictures -->
-                <div class="gallery-item" data-category="food" data-index="4">
-                    <img src="Donut1.JPG" alt="Unholy Donuts - Content Creation 1">
-                    <div class="gallery-item-overlay">
-                        <p>Unholy Donuts</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="food" data-index="5">
-                    <img src="matchadonut.jpg" alt="Matcha Donut Photography">
-                    <div class="gallery-item-overlay">
-                        <p>Product Photography</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="food" data-index="6">
-                    <img src="sprinkle_donut.jpg" alt="Sprinkle Donut Content">
-                    <div class="gallery-item-overlay">
-                        <p>Brand Content</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="food" data-index="7">
-                    <img src="donut3.jpg" alt="Donut Photography 3">
-                    <div class="gallery-item-overlay">
-                        <p>Food Content</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="food" data-index="8">
-                    <img src="matcha_donut_2.jpg" alt="Matcha Donut 2">
-                    <div class="gallery-item-overlay">
-                        <p>Visual Content</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose">&times;</button>
-            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
-            <img src="" alt="" id="lightboxImg">
-            <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
-            <div class="lightbox-caption" id="lightboxCaption"></div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text fade-in">
+        <h1 class="hero-title">
+            Mikaela Jusi
+        </h1>
+        <p class="hero-subtitle">Social Media Manager · Content Strategist</p>
+        <p class="hero-sub">
+            3+ years growing engagement and brand presence for lifestyle and hospitality businesses in Toronto. From content calendars to paid ads — I make it work.
+        </p>
+        <div class="hero-btns">
+            <a href="#gallery" class="btn-primary">See My Work</a>
+            <a href="#contact" class="btn-secondary">Let's Connect</a>
         </div>
     </div>
 
-    <section id="portfolio">
-        <div class="portfolio-container">
-            <h3>Featured Work</h3>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="instagram_page_overview.PNG" alt="Instagram page management">
-                    <div class="portfolio-caption">
-                        <h4>Social Media Management</h4>
-                        <p>Full-service Instagram management including content strategy, posting schedule, and engagement growth</p>
-                    </div>
+    <div class="hero-visual fade-in">
+        <div class="profile-image-container">
+            <img src="./BIO.JPG?v=2" alt="Mikaela Jusi" class="profile-image">
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <span>Content Strategy</span><span class="dot">✦</span>
+        <span>Meta Ads</span><span class="dot">✦</span>
+        <span>Short-Form Video</span><span class="dot">✦</span>
+        <span>Community Growth</span><span class="dot">✦</span>
+        <span>Brand Voice</span><span class="dot">✦</span>
+        <span>Influencer Partnerships</span><span class="dot">✦</span>
+        <span>Analytics & Reporting</span><span class="dot">✦</span>
+        <span>Copywriting</span><span class="dot">✦</span>
+        <span>Content Strategy</span><span class="dot">✦</span>
+        <span>Meta Ads</span><span class="dot">✦</span>
+        <span>Short-Form Video</span><span class="dot">✦</span>
+        <span>Community Growth</span><span class="dot">✦</span>
+        <span>Brand Voice</span><span class="dot">✦</span>
+        <span>Influencer Partnerships</span><span class="dot">✦</span>
+        <span>Analytics & Reporting</span><span class="dot">✦</span>
+        <span>Copywriting</span><span class="dot">✦</span>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="fade-in">
+        <p class="about-label">A little about me</p>
+        <h2 class="about-heading">
+            I traded quick content for <em>timeless strategy.</em>
+        </h2>
+        <div class="about-body">
+            <p>
+                Hi, I'm Mikaela — a result-driven Social Media Manager with 3+ years of experience growing engagement and brand presence for lifestyle and hospitality businesses across the GTA.
+            </p>
+            <p>
+                I'm skilled in content strategy, short-form video production, and community building — and I care deeply about making brands feel <em>real</em> online. Not just pretty, but purposeful.
+            </p>
+            <p>
+                From building videography teams and launching merchandise campaigns to managing multi-location expansions and Meta ad budgets, I bring both the creative and the operational.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--cream);">
+        <path d="M0,30 C180,60 360,0 540,30 C720,60 900,0 1080,30 C1260,60 1350,15 1440,30 L1440,60 L0,60 Z" fill="#C1DBE8"/>
+    </svg>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+    <div class="gallery-container">
+        <p class="about-label" style="color:#6b4a8c;">My creative work</p>
+        <h2 class="section-heading">Gallery <em>&amp; Portfolio</em></h2>
+        <div class="gallery-tabs">
+            <button class="gallery-tab active" data-category="all">All Work</button>
+            <button class="gallery-tab" data-category="dance">Dance Studio</button>
+            <button class="gallery-tab" data-category="food">Food Content</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- UDEC Pictures -->
+            <div class="gallery-item fade-in" data-category="dance" data-index="0">
+                <img src="model_picture_1.jpg" alt="Underground Dance Centre - Model Photography 1">
+                <div class="gallery-item-overlay">
+                    <p>Underground Dance Centre</p>
                 </div>
-                <div class="portfolio-item">
-                    <img src="model_picture_1.jpg" alt="Dance studio content">
-                    <div class="portfolio-caption">
-                        <h4>Content Creation</h4>
-                        <p>Professional photo and video content for The Underground Dance Centre's social platforms</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="matchadonut.jpg" alt="Food photography">
-                    <div class="portfolio-caption">
-                        <h4>Brand Photography</h4>
-                        <p>Eye-catching product photography that drives engagement and foot traffic for Unholy Donuts</p>
-                    </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="dance" data-index="1">
+                <img src="model_picture_2.jpg" alt="Underground Dance Centre - Model Photography 2">
+                <div class="gallery-item-overlay">
+                    <p>Underground Dance Centre</p>
                 </div>
             </div>
+            <div class="gallery-item fade-in" data-category="dance" data-index="2">
+                <img src="model_picture_two.jpg" alt="Underground Dance Centre - Model Photography 3">
+                <div class="gallery-item-overlay">
+                    <p>Underground Dance Centre</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="dance" data-index="3">
+                <img src="instagram_page_overview.PNG" alt="Instagram Management Overview">
+                <div class="gallery-item-overlay">
+                    <p>Instagram Management</p>
+                </div>
+            </div>
+            <!-- Donut Pictures -->
+            <div class="gallery-item fade-in" data-category="food" data-index="4">
+                <img src="Donut1.JPG" alt="Unholy Donuts - Content Creation 1">
+                <div class="gallery-item-overlay">
+                    <p>Unholy Donuts</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="food" data-index="5">
+                <img src="matchadonut.jpg" alt="Matcha Donut Photography">
+                <div class="gallery-item-overlay">
+                    <p>Product Photography</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="food" data-index="6">
+                <img src="sprinkle_donut.jpg" alt="Sprinkle Donut Content">
+                <div class="gallery-item-overlay">
+                    <p>Brand Content</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="food" data-index="7">
+                <img src="donut3.jpg" alt="Donut Photography 3">
+                <div class="gallery-item-overlay">
+                    <p>Food Content</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="food" data-index="8">
+                <img src="matcha_donut_2.jpg" alt="Matcha Donut 2">
+                <div class="gallery-item-overlay">
+                    <p>Visual Content</p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="experience">
-        <div class="experience-container">
-            <h3>Work Experience</h3>
-            
-            <div class="job">
-                <h4>The Underground Dance Centre</h4>
-                <p class="job-date">Jan 2024 - May 2025</p>
-                <ul>
-                    <li>Managed multi-platform content strategy for Instagram, TikTok, Facebook and Google</li>
-                    <li>Increased Instagram engagement by 12% in six months through video optimization</li>
-                    <li>Led promotional campaigns boosting sign-ups by 14% and directed merchandise launch</li>
-                    <li>Built internal videography team and scalable content workflows</li>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+        <img src="" alt="" id="lightboxImg">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+    </div>
+</div>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--pastel-blue);">
+        <path d="M0,30 C180,0 360,60 540,30 C720,0 900,60 1080,30 C1260,0 1350,45 1440,30 L1440,60 L0,60 Z" fill="var(--cream)"/>
+    </svg>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+    <div class="fade-in">
+        <p class="about-label">Where I've been</p>
+        <h2 class="section-heading">Work <em>Experience</em></h2>
+    </div>
+
+    <div class="timeline">
+        <div class="exp-card fade-in">
+            <div class="exp-date">Jan 2024 – May 2025</div>
+            <div class="exp-content">
+                <h3>Social Media Manager &amp; Asst. Facility Manager</h3>
+                <div class="exp-company">The Underground Dance Centre · Toronto</div>
+                <ul class="exp-bullets">
+                    <li>Developed and executed multi-platform content strategy across Instagram, TikTok, Facebook, and Google aligned with program launches.</li>
+                    <li>Increased Instagram engagement by <strong>12%</strong> within 6 months through short-form video optimization and audience retention strategy.</li>
+                    <li>Spearheaded 6-week promotional campaign, driving a <strong>14% increase</strong> in client sign-ups.</li>
+                    <li>Launched and optimized Meta ad campaigns, monitoring KPIs and ad spend to improve reach and conversion performance.</li>
+                    <li>Built and led an internal videography team, implementing a scalable content production workflow.</li>
+                    <li>Directed a merchandise launch strategy including photoshoot production and Shopify promotion.</li>
                 </ul>
+                <div>
+                    <span class="exp-tag">Meta Ads</span>
+                    <span class="exp-tag">Video Production</span>
+                    <span class="exp-tag">Team Leadership</span>
+                </div>
             </div>
-            
-            <div class="job">
-                <h4>Unholy Donuts</h4>
-                <p class="job-date">Oct 2022 - Dec 2024</p>
-                <ul>
-                    <li>Executed social strategy during multi-location expansion across GTA</li>
-                    <li>Coordinated influencer partnerships and product launches</li>
-                    <li>Managed staff, operations and production workflows at new location</li>
-                    <li>Created viral-worthy content that drove foot traffic and brand awareness</li>
+        </div>
+
+        <div class="exp-card fade-in">
+            <div class="exp-date">Oct 2022 – Dec 2024</div>
+            <div class="exp-content">
+                <h3>Social Media Manager &amp; Store Manager</h3>
+                <div class="exp-company">Unholy Donuts · Toronto</div>
+                <ul class="exp-bullets">
+                    <li>Led social media strategy during a multi-location expansion across the GTA.</li>
+                    <li>Conducted competitor, hashtag, and trend research to improve discoverability and search performance.</li>
+                    <li>Coordinated influencer partnerships and media collaborations to expand brand awareness.</li>
+                    <li>Spearheaded the opening of a second location near CF Toronto Eaton Centre.</li>
+                    <li>Managed and trained 20+ staff members and implemented operational systems.</li>
                 </ul>
+                <div>
+                    <span class="exp-tag">Influencer Collab</span>
+                    <span class="exp-tag">Multi-Location Growth</span>
+                    <span class="exp-tag">Operations</span>
+                </div>
             </div>
-            
-            <div class="job">
-                <h4>Freelance Social Media Management</h4>
-                <p class="job-date">Jan 2025 - Present</p>
-                <ul>
-                    <li>Provided content strategy and marketing plans for Toronto businesses</li>
-                    <li>Handled copywriting, website sales setup, and event volunteer coordination</li>
-                    <li>Delivered measurable results for diverse clients across industries</li>
+        </div>
+
+        <div class="exp-card fade-in">
+            <div class="exp-date">Jan 2025 – Present</div>
+            <div class="exp-content">
+                <h3>Freelance Social Media Manager</h3>
+                <div class="exp-company">Toronto-Based Small Businesses</div>
+                <ul class="exp-bullets">
+                    <li>Created and developed content strategy and marketing plans for small Toronto-based businesses.</li>
+                    <li>Copywriting for captions and website sale set-up.</li>
+                    <li>Managed all event volunteers and ensured smooth show running behind the scenes.</li>
                 </ul>
-            </div>
-            
-            <h3 style="margin-top: 3rem;">Education</h3>
-            <div class="job">
-                <h4>Diploma in Baking and Pastry Arts Management</h4>
-                <p class="job-date">George Brown College | 2018 - 2021</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="tools">
-        <div class="tools-container">
-            <h3>Tools & Skills</h3>
-            <div class="tools-grid">
-                <div class="tool-badge">Meta Business Suite</div>
-                <div class="tool-badge">CapCut</div>
-                <div class="tool-badge">Canva</div>
-                <div class="tool-badge">Later</div>
-                <div class="tool-badge">Google Workspace</div>
-                <div class="tool-badge">Notion</div>
-                <div class="tool-badge">Hootsuite</div>
-                <div class="tool-badge">SEO Copywriting</div>
-                <div class="tool-badge">Meta Ads</div>
-                <div class="tool-badge">TikTok Creator</div>
-                <div class="tool-badge">Instagram Reels</div>
-                <div class="tool-badge">Analytics</div>
+                <div>
+                    <span class="exp-tag">Freelance</span>
+                    <span class="exp-tag">Strategy</span>
+                    <span class="exp-tag">Copywriting</span>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="contact">
-        <div class="contact-container">
-            <h3>Let's Connect</h3>
-            <div class="contact-info">
-                <p>📞 +1 (647) 446‑5404</p>
-                <p>📧 <a href="mailto:madebymikaelaa@gmail.com">madebymikaelaa@gmail.com</a></p>
-                <p>📍 Toronto, ON</p>
-                <p><a href="https://linkedin.com" target="_blank">LinkedIn</a> • <a href="#">Portfolio</a></p>
+        <div class="exp-card fade-in">
+            <div class="exp-date">2018 – 2021</div>
+            <div class="exp-content">
+                <h3>Diploma in Baking &amp; Pastry Arts Management</h3>
+                <div class="exp-company">George Brown College · Toronto</div>
+                <ul class="exp-bullets">
+                    <li>Foundation in operations, production workflow, and management — skills that now inform how I build systems for brands.</li>
+                </ul>
+                <div>
+                    <span class="exp-tag">Education</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        &copy; 2026 Mikaela Jusi. Crafted with passion & precision.
-    </footer>
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--cream);">
+        <path d="M0,20 C240,60 480,0 720,30 C960,60 1200,0 1440,20 L1440,60 L0,60 Z" fill="var(--chocolate-cosmos)"/>
+    </svg>
+</div>
 
-    <script>
-        // Gallery Filtering
-        const galleryTabs = document.querySelectorAll('.gallery-tab');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        galleryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const category = tab.getAttribute('data-category');
-                
-                // Update active tab
-                galleryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Filter gallery items
-                galleryItems.forEach(item => {
-                    const itemCategory = item.getAttribute('data-category');
-                    if (category === 'all' || itemCategory === category) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 10);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
-        // Lightbox Functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const lightboxPrev = document.getElementById('lightboxPrev');
-        const lightboxNext = document.getElementById('lightboxNext');
-        
-        let currentImageIndex = 0;
-        let visibleImages = [];
-        
-        function updateVisibleImages() {
-            visibleImages = Array.from(galleryItems).filter(item => {
-                return window.getComputedStyle(item).display !== 'none';
-            });
-        }
-        
-        function openLightbox(index) {
-            updateVisibleImages();
-            currentImageIndex = index;
-            const item = visibleImages[currentImageIndex];
-            const img = item.querySelector('img');
-            const caption = item.querySelector('.gallery-item-overlay p');
-            
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightboxCaption.textContent = caption ? caption.textContent : img.alt;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function showPrevImage() {
-            currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
-            openLightbox(currentImageIndex);
-        }
-        
-        function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
-            openLightbox(currentImageIndex);
-        }
-        
-        // Event Listeners
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                updateVisibleImages();
-                const visibleIndex = visibleImages.indexOf(item);
-                openLightbox(visibleIndex);
-            });
-        });
-        
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightboxPrev.addEventListener('click', showPrevImage);
-        lightboxNext.addEventListener('click', showNextImage);
-        
-        // Close lightbox on background click
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
+<!-- TOOLS -->
+<section class="tools-section">
+    <p class="about-label" style="color:var(--buttermilk);">My toolkit</p>
+    <h2 class="section-heading">Tools I <em>Use Daily</em></h2>
+    <div class="tools-grid">
+        <div class="tool-pill">📘 Meta Business Suite</div>
+        <div class="tool-pill">🎞️ CapCut</div>
+        <div class="tool-pill">🎨 Canva</div>
+        <div class="tool-pill">📅 Later</div>
+        <div class="tool-pill">📂 Google Workspace</div>
+        <div class="tool-pill">📋 Notion</div>
+        <div class="tool-pill">🗓️ Hootsuite</div>
+        <div class="tool-pill">📊 Instagram Analytics</div>
+        <div class="tool-pill">🎬 TikTok Creator Studio</div>
+        <div class="tool-pill">✍️ SEO Copywriting</div>
+        <div class="tool-pill">📈 Meta Ads</div>
+        <div class="tool-pill">📱 Instagram Reels</div>
+    </div>
+</section>
+
+<!-- WAVY DIVIDER -->
+<div class="wavy">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--chocolate-cosmos);">
+        <path d="M0,40 C360,0 720,60 1080,20 C1260,0 1380,40 1440,30 L1440,60 L0,60 Z" fill="var(--pastel-blue)"/>
+    </svg>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <p class="about-label" style="color:#6b4a8c;">Ready to grow?</p>
+    <h2 class="section-heading">Let's <em>work together.</em></h2>
+    <p class="contact-sub">Whether you need a full strategy overhaul or just a scroll-stopping Reel — I'm your person.</p>
+    <div class="contact-links">
+        <a href="mailto:madebymikaelaa@gmail.com" class="contact-link primary">✉️ madebymikaelaa@gmail.com</a>
+        <a href="tel:+16474465404" class="contact-link">📞 (647) 446-5404</a>
+        <a href="https://linkedin.com" target="_blank" class="contact-link">💼 LinkedIn</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span>Mikaela Jusi</span> · Social Media Manager · Toronto, ON</p>
+</footer>
+
+<script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
             }
         });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Gallery Filtering
+    const galleryTabs = document.querySelectorAll('.gallery-tab');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.getAttribute('data-category');
             
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') showPrevImage();
-            if (e.key === 'ArrowRight') showNextImage();
+            // Update active tab
+            galleryTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Filter gallery items
+            galleryItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (category === 'all' || itemCategory === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
         });
+    });
+    
+    // Lightbox Functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    
+    let currentImageIndex = 0;
+    let visibleImages = [];
+    
+    function updateVisibleImages() {
+        visibleImages = Array.from(galleryItems).filter(item => {
+            return window.getComputedStyle(item).display !== 'none';
+        });
+    }
+    
+    function openLightbox(index) {
+        updateVisibleImages();
+        currentImageIndex = index;
+        const item = visibleImages[currentImageIndex];
+        const img = item.querySelector('img');
         
-        // Initialize gallery items with transition
-        galleryItems.forEach(item => {
-            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+        openLightbox(currentImageIndex);
+    }
+    
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+        openLightbox(currentImageIndex);
+    }
+    
+    // Event Listeners
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            updateVisibleImages();
+            const visibleIndex = visibleImages.indexOf(item);
+            openLightbox(visibleIndex);
         });
-    </script>
+    });
+    
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrevImage);
+    lightboxNext.addEventListener('click', showNextImage);
+    
+    // Close lightbox on background click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrevImage();
+        if (e.key === 'ArrowRight') showNextImage();
+    });
+    
+    // Initialize gallery items with transition
+    galleryItems.forEach(item => {
+        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    });
+</script>
+
 </body>
 </html>
