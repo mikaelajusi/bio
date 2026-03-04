@@ -6,13 +6,22 @@
     <title>Mikaela Jusi — Social Media Manager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Nunito:wght@400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
     <style>
         /* Custom Font - Stella Aesta */
         @font-face {
             font-family: 'Stella Aesta';
             src: url('https://cdn.jsdelivr.net/gh/fontshare/fonts@latest/fonts/stella-aesta/StellaAesta-Regular.woff2') format('woff2'),
                  url('https://cdn.jsdelivr.net/gh/fontshare/fonts@latest/fonts/stella-aesta/StellaAesta-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* Custom Font - March */
+        @font-face {
+            font-family: 'March';
+            src: url('https://cdn.jsdelivr.net/gh/fontshare/fonts@latest/fonts/march/March-Regular.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/fontshare/fonts@latest/fonts/march/March-Regular.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
@@ -43,55 +52,120 @@
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 1rem 2.5rem;
-            background: var(--chocolate-cosmos);
-            border-bottom: 2px solid #3a1019;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(180deg, rgba(193,219,232,0.95) 0%, rgba(193,219,232,0.9) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: none;
         }
         .nav-logo {
-            font-family: 'Stella Aesta', 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: 1.1rem;
-            color: var(--cream);
-            letter-spacing: 0.05em;
+            font-family: 'Pinyon Script', cursive;
+            font-weight: 400;
+            font-size: 2rem;
+            color: var(--chocolate-cosmos);
+            letter-spacing: 0.02em;
         }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links { display: flex; gap: 0.8rem; list-style: none; }
         .nav-links a {
-            color: var(--cream);
+            color: var(--black);
             text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--buttermilk); }
-        .nav-cta {
-            background: var(--buttermilk);
-            color: var(--black) !important;
-            padding: 0.45rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: lowercase;
+            transition: all 0.2s;
+            padding: 0.6rem 1.5rem;
             border-radius: 99px;
-            border: 2px solid var(--black);
+            background: rgba(255,255,255,0.6);
+            border: 2px solid transparent;
+        }
+        .nav-links a:hover { 
+            background: rgba(255,255,255,0.9);
+            border-color: var(--chocolate-cosmos);
+        }
+        .nav-cta {
+            background: var(--buttermilk) !important;
+            color: var(--black) !important;
+            border: 2px solid var(--black) !important;
+            font-weight: 700;
+        }
+        .nav-cta:hover {
+            background: #fff5a3 !important;
         }
 
         /* ─── HERO ─── */
         .hero {
             min-height: 100vh;
-            background: var(--chocolate-cosmos);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            background: #C1DBE8;
+            display: flex;
             align-items: center;
+            justify-content: center;
             padding: 7rem 4rem 4rem;
             position: relative;
             overflow: hidden;
         }
-        .hero::after {
-            content: '';
-            position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
-            background: var(--cream);
-            clip-path: ellipse(55% 100% at 50% 100%);
+        
+        .floating-image {
+            position: absolute;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+            z-index: 2;
+            object-fit: cover;
         }
-
-        .hero-text { color: var(--cream); position: relative; z-index: 1; }
+        .floating-image:hover { transform: translateY(-5px) scale(1.02); }
+        
+        /* Left group - Dance images */
+        .img-left-main {
+            width: 320px;
+            height: 400px;
+            top: 18%;
+            left: 5%;
+            z-index: 3;
+        }
+        .img-left-small-1 {
+            width: 180px;
+            height: 220px;
+            top: 12%;
+            left: 18%;
+            z-index: 4;
+        }
+        .img-left-small-2 {
+            width: 160px;
+            height: 200px;
+            bottom: 18%;
+            left: 8%;
+            z-index: 4;
+        }
+        
+        /* Right group - Food images */
+        .img-right-main {
+            width: 320px;
+            height: 400px;
+            top: 18%;
+            right: 5%;
+            z-index: 3;
+        }
+        .img-right-small-1 {
+            width: 200px;
+            height: 250px;
+            top: 45%;
+            right: 16%;
+            z-index: 4;
+        }
+        .img-right-small-2 {
+            width: 180px;
+            height: 220px;
+            bottom: 18%;
+            right: 7%;
+            z-index: 4;
+        }
+        
+        .hero-text { 
+            color: var(--chocolate-cosmos); 
+            position: relative; 
+            z-index: 10;
+            text-align: center;
+        }
         .hero-subtitle {
             font-size: 1.1rem;
             letter-spacing: 0.15em;
@@ -102,23 +176,27 @@
             margin-bottom: 1.5rem;
         }
         .hero-title {
-            font-family: 'Stella Aesta', 'Playfair Display', serif;
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.0;
-            margin-bottom: 0.2rem;
-        }
-        .hero-title em {
-            font-family: 'Instrument Serif', serif;
-            font-style: italic;
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(4rem, 10vw, 8rem);
             font-weight: 400;
-            color: var(--buttermilk);
+            line-height: 0.9;
+            margin-bottom: 0;
+            color: var(--chocolate-cosmos);
+        }
+        .hero-title-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            display: block;
+            color: var(--chocolate-cosmos);
+            margin-top: -0.2em;
         }
         .hero-sub {
             font-size: 0.9rem;
             line-height: 1.7;
             max-width: 400px;
-            margin: 1.5rem 0 2rem;
+            margin: 1.5rem auto 2rem;
             opacity: 0.85;
         }
         .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -152,25 +230,24 @@
         .btn-secondary:hover { transform: translateY(-2px); }
 
         .hero-visual {
-            display: flex; justify-content: center; align-items: center;
-            position: relative; z-index: 1;
+            display: none;
         }
         .profile-image-container {
             position: relative;
-            width: 320px;
-            height: 320px;
+            width: 100%;
+            max-width: 420px;
         }
         .profile-image {
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
+            height: auto;
+            border-radius: 30px;
             object-fit: cover;
-            border: 6px solid var(--buttermilk);
-            box-shadow: 8px 8px 0 var(--black);
+            border: 12px solid var(--chocolate-cosmos);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
         }
         .profile-image:hover {
-            transform: rotate(3deg) scale(1.02);
+            transform: scale(1.02);
         }
 
         /* ─── MARQUEE ─── */
@@ -202,11 +279,21 @@
 
         /* ─── ABOUT ─── */
         .about {
-            background: var(--cream);
+            background: #FFF9E6;
             padding: 6rem 4rem;
-            text-align: center;
-            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 500px 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
             margin: 0 auto;
+        }
+        .about-left {
+            display: flex;
+            justify-content: center;
+        }
+        .about-right {
+            color: var(--chocolate-cosmos);
         }
         .about-label {
             font-size: 0.75rem;
@@ -217,21 +304,36 @@
             margin-bottom: 0.5rem;
         }
         .about-heading {
-            font-family: 'Stella Aesta', 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 4vw, 4rem);
-            font-weight: 900;
-            line-height: 1.05;
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.3;
             margin-bottom: 1.5rem;
+            color: var(--chocolate-cosmos);
+        }
+        .about-heading-script {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(5rem, 10vw, 8rem);
+            font-weight: 400;
+            line-height: 0.9;
+            display: block;
+            color: var(--chocolate-cosmos);
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
         }
         .about-heading em {
-            font-family: 'Instrument Serif', serif;
+            font-family: 'March';
             font-style: italic;
             text-decoration: underline;
             text-decoration-color: var(--buttermilk);
             text-decoration-thickness: 4px;
         }
-        .about-body { font-size: 0.95rem; line-height: 1.8; color: #444; max-width: 700px; margin: 0 auto; }
-        .about-body p + p { margin-top: 1rem; }
+        .about-body { 
+            font-size: 1rem; 
+            line-height: 1.8; 
+            color: var(--chocolate-cosmos); 
+        }
+        .about-body p + p { margin-top: 1.2rem; }
 
         /* ─── GALLERY ─── */
         .gallery-section {
@@ -240,16 +342,16 @@
         }
         .gallery-container { max-width: 1400px; margin: 0 auto; }
         .section-heading {
-            font-family: 'Stella Aesta', 'Playfair Display', serif;
+            font-family: 'March';
             font-size: clamp(2.2rem, 4vw, 3.5rem);
             font-weight: 900;
             margin-bottom: 0.5rem;
             text-align: center;
         }
-        .section-heading em {
-            font-family: 'Instrument Serif', serif;
-            font-style: italic;
-            font-weight: 400;
+        .section-heading strong {
+            font-family: 'March';
+            font-style: normal;
+            font-weight: 900;
         }
         .gallery-tabs {
             display: flex;
@@ -286,7 +388,7 @@
             border: 3px solid var(--black);
             cursor: pointer;
             transition: all 0.3s ease;
-            aspect-ratio: 1;
+            aspect-ratio: 9/16;
             box-shadow: 5px 5px 0 var(--black);
         }
         .gallery-item:hover {
@@ -425,7 +527,7 @@
         .exp-date {
             font-family: 'Instrument Serif', serif;
             font-style: italic;
-            font-size: 0.85rem;
+            font-size: 1.7rem;
             color: #777;
             padding-top: 0.2rem;
         }
@@ -546,10 +648,29 @@
         }
 
         /* ─── RESPONSIVE ─── */
+        @media (max-width: 968px) {
+            .about { 
+                grid-template-columns: 1fr; 
+                gap: 3rem;
+                text-align: center;
+            }
+            .profile-image-container { 
+                max-width: 350px; 
+                margin: 0 auto; 
+            }
+            .floating-image { display: none; }
+            .hero-title { font-size: clamp(3rem, 10vw, 6rem); }
+            .hero-title-bold { font-size: clamp(3rem, 10vw, 6rem); }
+            .about-heading-script { font-size: clamp(4rem, 12vw, 6rem); }
+        }
         @media (max-width: 768px) {
-            .hero { grid-template-columns: 1fr; padding: 6rem 2rem 5rem; }
-            .hero-visual { margin-top: 2rem; }
-            .profile-image-container { width: 250px; height: 250px; margin: 0 auto; }
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { gap: 0.5rem; }
+            .nav-links a { 
+                font-size: 0.75rem; 
+                padding: 0.5rem 1rem; 
+            }
+            .hero { padding: 6rem 2rem 5rem; }
             .experience, .gallery-section, .tools-section, .contact { padding: 4rem 2rem; }
             .exp-card { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
@@ -560,76 +681,57 @@
 
 <!-- NAV -->
 <nav>
-    <div class="nav-logo">MIKAELA JUSI</div>
+    <div class="nav-logo">mikaela jusi</div>
     <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact" class="nav-cta">Let's Work</a></li>
+        <li><a href="#hero">home</a></li>
+        <li><a href="#about">about me</a></li>
+        <li><a href="#gallery">projects</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#contact" class="nav-cta">let's connect</a></li>
     </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+    <!-- Left group: Dance/Underground images -->
+    <img src="model_picture_two.jpg" alt="Underground Dance Centre Main" class="floating-image img-left-main">
+    <img src="model_picture_2.jpg" alt="Class" class="floating-image img-left-small-1">
+    <img src="model_picture_1.jpg" alt="Merchandise" class="floating-image img-left-small-2">
+    
+    <!-- Right group: Donut images -->
+    <img src="Donut1.JPG" alt="Donuts Main" class="floating-image img-right-main">
+    <img src="matchadonut.jpg" alt="Matcha Donut" class="floating-image img-right-small-1">
+    <img src="sprinkle_donut.jpg" alt="Sprinkle Donut" class="floating-image img-right-small-2">
+    
     <div class="hero-text fade-in">
         <h1 class="hero-title">
-            Mikaela Jusi
+            social media
         </h1>
-        <p class="hero-subtitle">Social Media Manager · Content Strategist</p>
-        <p class="hero-sub">
-            3+ years growing engagement and brand presence for lifestyle and hospitality businesses in Toronto. From content calendars to paid ads — I make it work.
-        </p>
-        <div class="hero-btns">
-            <a href="#gallery" class="btn-primary">See My Work</a>
-            <a href="#contact" class="btn-secondary">Let's Connect</a>
-        </div>
+        <span class="hero-title-bold">portfolio</span>
     </div>
+</section>
 
-    <div class="hero-visual fade-in">
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-left fade-in">
         <div class="profile-image-container">
             <img src="./BIO.JPG?v=2" alt="Mikaela Jusi" class="profile-image">
         </div>
     </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-    <div class="marquee-track">
-        <span>Content Strategy</span><span class="dot">✦</span>
-        <span>Meta Ads</span><span class="dot">✦</span>
-        <span>Short-Form Video</span><span class="dot">✦</span>
-        <span>Community Growth</span><span class="dot">✦</span>
-        <span>Brand Voice</span><span class="dot">✦</span>
-        <span>Influencer Partnerships</span><span class="dot">✦</span>
-        <span>Analytics & Reporting</span><span class="dot">✦</span>
-        <span>Copywriting</span><span class="dot">✦</span>
-        <span>Content Strategy</span><span class="dot">✦</span>
-        <span>Meta Ads</span><span class="dot">✦</span>
-        <span>Short-Form Video</span><span class="dot">✦</span>
-        <span>Community Growth</span><span class="dot">✦</span>
-        <span>Brand Voice</span><span class="dot">✦</span>
-        <span>Influencer Partnerships</span><span class="dot">✦</span>
-        <span>Analytics & Reporting</span><span class="dot">✦</span>
-        <span>Copywriting</span><span class="dot">✦</span>
-    </div>
-</div>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-    <div class="fade-in">
-        <p class="about-label">A little about me</p>
+    <div class="about-right fade-in">
         <h2 class="about-heading">
-            I traded quick content for <em>timeless strategy.</em>
+            Hey! I'm
+            <span class="about-heading-script">Mikaela</span>
         </h2>
         <div class="about-body">
             <p>
-                Hi, I'm Mikaela — a result-driven Social Media Manager with 3+ years of experience growing engagement and brand presence for lifestyle and hospitality businesses across the GTA.
+                I'm a Toronto-based Social Media Manager with 3+ years of experience driving brand growth for high-volume consumer businesses. I specialize in short-form video strategy, community building, and performance-driven campaigns that align creative storytelling with measurable business goals.
             </p>
             <p>
-                I'm skilled in content strategy, short-form video production, and community building — and I care deeply about making brands feel <em>real</em> online. Not just pretty, but purposeful.
+                What sets me apart is my operational background. Having managed teams of 20–100+ staff members while leading digital strategy, I understand how marketing impacts real-world revenue, customer retention, and brand perception.
             </p>
             <p>
-                From building videography teams and launching merchandise campaigns to managing multi-location expansions and Meta ad budgets, I bring both the creative and the operational.
+                I'm passionate about helping brands build scalable content systems that drive long-term growth — not just temporary engagement spikes.
             </p>
         </div>
     </div>
@@ -646,7 +748,7 @@
 <section class="gallery-section" id="gallery">
     <div class="gallery-container">
         <p class="about-label" style="color:#6b4a8c;">My creative work</p>
-        <h2 class="section-heading">Gallery <em>&amp; Portfolio</em></h2>
+        <h2 class="section-heading">Gallery <strong>&amp; Portfolio</strong></h2>
         <div class="gallery-tabs">
             <button class="gallery-tab active" data-category="all">All Work</button>
             <button class="gallery-tab" data-category="dance">Dance Studio</button>
@@ -672,38 +774,32 @@
                     <p>Underground Dance Centre</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="dance" data-index="3">
-                <img src="instagram_page_overview.PNG" alt="Instagram Management Overview">
-                <div class="gallery-item-overlay">
-                    <p>Instagram Management</p>
-                </div>
-            </div>
             <!-- Donut Pictures -->
-            <div class="gallery-item fade-in" data-category="food" data-index="4">
+            <div class="gallery-item fade-in" data-category="food" data-index="3">
                 <img src="Donut1.JPG" alt="Unholy Donuts - Content Creation 1">
                 <div class="gallery-item-overlay">
                     <p>Unholy Donuts</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="5">
+            <div class="gallery-item fade-in" data-category="food" data-index="4">
                 <img src="matchadonut.jpg" alt="Matcha Donut Photography">
                 <div class="gallery-item-overlay">
                     <p>Product Photography</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="6">
+            <div class="gallery-item fade-in" data-category="food" data-index="5">
                 <img src="sprinkle_donut.jpg" alt="Sprinkle Donut Content">
                 <div class="gallery-item-overlay">
                     <p>Brand Content</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="7">
+            <div class="gallery-item fade-in" data-category="food" data-index="6">
                 <img src="donut3.jpg" alt="Donut Photography 3">
                 <div class="gallery-item-overlay">
                     <p>Food Content</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="8">
+            <div class="gallery-item fade-in" data-category="food" data-index="7">
                 <img src="matcha_donut_2.jpg" alt="Matcha Donut 2">
                 <div class="gallery-item-overlay">
                     <p>Visual Content</p>
@@ -734,7 +830,7 @@
 <section class="experience" id="experience">
     <div class="fade-in">
         <p class="about-label">Where I've been</p>
-        <h2 class="section-heading">Work <em>Experience</em></h2>
+        <h2 class="section-heading">Work <strong>Experience</strong></h2>
     </div>
 
     <div class="timeline">
@@ -823,7 +919,7 @@
 <!-- TOOLS -->
 <section class="tools-section">
     <p class="about-label" style="color:var(--buttermilk);">My toolkit</p>
-    <h2 class="section-heading">Tools I <em>Use Daily</em></h2>
+    <h2 class="section-heading">Tools I <strong>Use Daily</strong></h2>
     <div class="tools-grid">
         <div class="tool-pill">📘 Meta Business Suite</div>
         <div class="tool-pill">🎞️ CapCut</div>
@@ -850,7 +946,7 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
     <p class="about-label" style="color:#6b4a8c;">Ready to grow?</p>
-    <h2 class="section-heading">Let's <em>work together.</em></h2>
+    <h2 class="section-heading">Let's <strong>work together!</strong></h2>
     <p class="contact-sub">Whether you need a full strategy overhaul or just a scroll-stopping Reel — I'm your person.</p>
     <div class="contact-links">
         <a href="mailto:madebymikaelaa@gmail.com" class="contact-link primary">✉️ madebymikaelaa@gmail.com</a>
