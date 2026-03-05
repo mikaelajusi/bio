@@ -240,8 +240,10 @@
         .profile-image {
             width: 100%;
             height: auto;
-            border-radius: 30px;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
             object-fit: cover;
+            object-position: center;
             border: 12px solid var(--chocolate-cosmos);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
@@ -388,6 +390,38 @@
             text-transform: uppercase; letter-spacing: 0.14em;
             color: var(--chocolate-cosmos); margin-bottom: 0.9rem;
         }
+        .panel-social-links {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .panel-social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+            font-weight: 600;
+        }
+        .panel-social-link:hover {
+            color: var(--chocolate-cosmos);
+            transform: translateY(-1px);
+        }
+        .panel-social-link svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+        .panel-social-link.website {
+            color: #666;
+        }
+        .panel-social-link.website:hover {
+            color: var(--chocolate-cosmos);
+        }
         .panel-bullets {
             list-style: none; display: flex;
             flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem;
@@ -450,6 +484,209 @@
         .panel-photo:hover { transform: scale(1.04); }
         .panel-photo img, .panel-photo video {
             width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        
+        /* Custom layout for Unholy Donuts panel */
+        .panel-photos-split {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 0.8rem;
+            align-items: stretch;
+        }
+        .panel-left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .panel-videos-group {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .panel-photo-large {
+            border-radius: 15px;
+            overflow: hidden;
+            width: 200px;
+            aspect-ratio: 9/16;
+            background: #000;
+        }
+        .panel-photo-large video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .video-caption {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .video-caption svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .panel-photos-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            width: 150px;
+            align-items: center;
+        }
+        .panel-photo-stacked {
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .panel-photo-stacked:hover { transform: scale(1.02); }
+        .panel-photo-stacked img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Performance Metrics */
+        .performance-metrics {
+            margin-top: 0;
+        }
+        .metrics-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--chocolate-cosmos);
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
+            max-width: 420px;
+        }
+        .metric-card {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--black);
+            cursor: pointer;
+            transition: transform 0.2s;
+            background: white;
+            aspect-ratio: 3/2;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+        .metric-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* Modal System */
+        .folder-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .folder-modal.active { display: flex; }
+        .modal-content {
+            background: var(--cream);
+            border-radius: 12px;
+            border: 3px solid var(--black);
+            box-shadow: 8px 8px 0 var(--black);
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--chocolate-cosmos);
+            color: var(--cream);
+            border: 2px solid var(--black);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background: var(--black);
+        }
+        .modal-header {
+            margin-bottom: 1.5rem;
+            padding-right: 3rem;
+        }
+        .modal-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--chocolate-cosmos);
+        }
+        .modal-gallery {
+            display: grid;
+            gap: 1rem;
+        }
+        .modal-gallery.videos {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        .modal-gallery.images {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .modal-item {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid var(--black);
+            box-shadow: 3px 3px 0 var(--black);
+            background: #000;
+        }
+        .modal-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .modal-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .modal-item img:hover {
+            transform: scale(1.05);
         }
 
         /* ─── ABOUT ─── */
@@ -552,9 +789,11 @@
             transform: translateY(-2px);
         }
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display: flex;
             gap: 1.5rem;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding: 1rem 0;
         }
         .gallery-item {
             position: relative;
@@ -563,8 +802,10 @@
             border: 3px solid var(--black);
             cursor: pointer;
             transition: all 0.3s ease;
-            aspect-ratio: 9/16;
+            width: 320px;
+            height: 400px;
             box-shadow: 5px 5px 0 var(--black);
+            flex-shrink: 0;
         }
         .gallery-item:hover {
             transform: translateY(-5px);
@@ -575,8 +816,25 @@
             object-fit: cover;
             transition: transform 0.5s ease;
         }
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+        .gallery-item.video-item {
+            width: 225px;
+            height: 400px;
+            aspect-ratio: 9/16;
+        }
         .gallery-item:hover img {
             transform: scale(1.1);
+        }
+        .gallery-item.video-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item.video-item:hover video {
+            /* No scale for videos */
         }
         .gallery-item-overlay {
             position: absolute;
@@ -591,6 +849,43 @@
         }
         .gallery-item:hover .gallery-item-overlay {
             opacity: 1;
+        }
+
+        /* Gallery Navigation */
+        .gallery-wrapper {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--cream);
+            border: 3px solid var(--black);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: 900;
+            z-index: 10;
+            transition: all 0.2s;
+            box-shadow: 3px 3px 0 var(--black);
+        }
+        .gallery-nav:hover {
+            background: var(--chocolate-cosmos);
+            color: var(--cream);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .gallery-nav-prev {
+            left: -25px;
+        }
+        .gallery-nav-next {
+            right: -25px;
         }
 
         /* Lightbox */
@@ -618,6 +913,20 @@
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: #000;
+        }
+        #lightboxImg, #lightboxVideo {
+            display: none;
+        }
+        #lightboxImg.active, #lightboxVideo.active {
+            display: block;
         }
         .lightbox-close {
             position: absolute;
@@ -848,7 +1157,12 @@
             .hero { padding: 6rem 2rem 5rem; }
             .experience, .gallery-section, .tools-section, .contact { padding: 4rem 2rem; }
             .exp-card { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            .gallery-item { width: 240px; height: 300px; }
+            .gallery-nav { display: none; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .modal-content { padding: 1.5rem; max-height: 95vh; }
+            .modal-gallery.videos { grid-template-columns: 1fr; }
+            .modal-gallery.images { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -870,13 +1184,13 @@
 <section class="hero" id="hero">
     <!-- Left group: Dance/Underground images -->
     <img src="model_picture_two.jpg" alt="Underground Dance Centre Main" class="floating-image img-left-main">
-    <img src="model_picture_2.jpg" alt="Class" class="floating-image img-left-small-1">
+    <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581782/Merchandise_Launch_Video_rx9641.mp4" alt="Merchandise Launch" class="floating-image img-left-small-1" autoplay muted loop playsinline></video>
     <img src="model_picture_1.jpg" alt="Merchandise" class="floating-image img-left-small-2">
     
     <!-- Right group: Donut images -->
     <img src="Donut1.JPG" alt="Donuts Main" class="floating-image img-right-main">
     <img src="matchadonut.jpg" alt="Matcha Donut" class="floating-image img-right-small-1">
-    <img src="sprinkle_donut.jpg" alt="Sprinkle Donut" class="floating-image img-right-small-2">
+    <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772662676/Moving_Series_Ep.1_bdqpoe.mov" alt="Moving Series" class="floating-image img-right-small-2" autoplay muted loop playsinline></video>
     
     <div class="hero-text fade-in">
         <h1 class="hero-title">
@@ -896,17 +1210,17 @@
     <div class="about-right fade-in">
         <h2 class="about-heading">
             Hey! I'm
-            <span class="about-heading-script">Mikaela</span>
+            <span class="about-heading-script">Mikaela Jusi</span>
         </h2>
         <div class="about-body">
             <p>
-                I'm a Toronto-based Social Media Manager with 3+ years of experience driving brand growth for high-volume consumer businesses. I specialize in short-form video strategy, community building, and performance-driven campaigns that align creative storytelling with measurable business goals.
+                I'm a Toronto-based Social Media Manager with 3+ years of experience driving brand growth for high-volume, community-focused businesses. I specialize in short-form video strategy and community building campaigns that turn creative storytelling into measurable results. I thrive in fast-paced environments where creativity and structure need to coexist.
             </p>
             <p>
-                What sets me apart is my operational background. Having managed teams of 20–100+ staff members while leading digital strategy, I understand how marketing impacts real-world revenue, customer retention, and brand perception.
+                What truly sets me apart is my operational background. Having managed teams of 20–100+ staff members while overseeing digital strategy, I've seen how content impacts revenue, customer loyalty, and brand culture.
             </p>
             <p>
-                I'm passionate about helping brands build scalable content systems that drive long-term growth — not just temporary engagement spikes.
+                Based on my experience, social media isn't just about posting or chasing trends, it's about building a sustainable ecosystem that supports long-term growth.
             </p>
         </div>
     </div>
@@ -945,17 +1259,17 @@
                 <div class="exp-folder-info">
                     <p class="exp-folder-label">Unholy Donuts</p>
                     <p class="exp-folder-role">Social Media Manager &amp; Content Creator</p>
-                    <p class="exp-folder-dates">May 2023 – Dec 2023</p>
+                    <p class="exp-folder-dates">Oct 2022 – Dec 2023</p>
                     <button class="exp-folder-open-btn">Open folder <span class="btn-arrow">›</span></button>
                 </div>
             </div>
         </div>
         <div class="exp-folder" id="folder-3" onclick="toggleFolder('3')">
-            <div class="exp-folder-tab">🗂 Freelance</div>
+            <div class="exp-folder-tab">🗂 Freelance Work</div>
             <div class="exp-folder-body">
-                <img class="exp-folder-cover" src="./instagram_page_overview.PNG" alt="Freelance Work">
+                <img class="exp-folder-cover" src="./Announcement_Grid.jpeg" alt="Freelance Work and Personal Content">
                 <div class="exp-folder-info">
-                    <p class="exp-folder-label">Freelance</p>
+                    <p class="exp-folder-label">Freelance Work and Personal Content</p>
                     <p class="exp-folder-role">Social Media Strategist &amp; Content Creator</p>
                     <p class="exp-folder-dates">2022 – Present</p>
                     <button class="exp-folder-open-btn">Open folder <span class="btn-arrow">›</span></button>
@@ -969,6 +1283,26 @@
                 <div class="panel-text">
                     <h3>The Underground Dance Centre</h3>
                     <p class="panel-company">Toronto &middot; Jan 2024 – May 2025</p>
+                    <div class="panel-social-links">
+                        <a href="https://www.theundergrounddance.com/" target="_blank" rel="noopener noreferrer" class="panel-social-link website">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                            theundergrounddance.com
+                        </a>
+                        <a href="https://www.instagram.com/theundergrounddancecentre/?hl=en" target="_blank" rel="noopener noreferrer" class="panel-social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @theundergrounddancecentre
+                        </a>
+                        <a href="https://www.tiktok.com/@undergrounddancecentre?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="panel-social-link">
+                            <svg viewBox="0 0 448 512" fill="currentColor">
+                                <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+                            </svg>
+                            @undergrounddancecentre
+                        </a>
+                    </div>
                     <ul class="panel-bullets">
                         <li>Developed multi-platform content strategy across Instagram, TikTok, Facebook &amp; Google aligned with program launches.</li>
                         <li>Increased Instagram engagement by <strong>12%</strong> in 6 months through short-form video optimisation.</li>
@@ -978,18 +1312,52 @@
                     </ul>
                     <p class="media-label">Media files</p>
                     <div class="sub-folders">
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">TikTok clips</span></div>
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Analytics</span></div>
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Merch shoot</span></div>
+                        <div class="sub-folder" onclick="openModal('tiktokModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">TikTok clips</span></div>
+                        <div class="sub-folder" onclick="openModal('campaignModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Course Campaign</span></div>
+                        <div class="sub-folder" onclick="openModal('merchModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Merch shoot</span></div>
                     </div>
                 </div>
-                <div class="panel-photos">
-                    <div class="panel-photo"><img src="./model_picture_two.jpg" alt="Model main"></div>
-                    <div class="panel-photo"><img src="./model_picture_2.jpg" alt="Class"></div>
-                    <div class="panel-photo"><img src="./model_picture_1.jpg" alt="Details"></div>
-                    <div class="panel-photo"><img src="./model_picture_3.jpg" alt="Merchandise"></div>
-                    <div class="panel-photo"><img src="./model_picture_4.jpg" alt="Model 4"></div>
-                    <div class="panel-photo"><img src="./instagram_page_overview.PNG" alt="Instagram"></div>
+                <div class="panel-photos-split">
+                    <div class="panel-left-column">
+                        <div class="panel-videos-group">
+                            <div class="video-container">
+                                <div class="panel-photo-large">
+                                    <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772659370/UDC_TikTok_14k_Views_puafiq.mp4" autoplay muted loop playsinline></video>
+                                </div>
+                                <div class="video-caption">
+                                    <svg viewBox="0 0 448 512" fill="currentColor">
+                                        <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+                                    </svg>
+                                    <span>14k Views</span>
+                                </div>
+                            </div>
+                            <div class="video-container">
+                                <div class="panel-photo-large">
+                                    <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581776/Hiring_Videographers_ggjhbz.mp4" autoplay muted loop playsinline></video>
+                                </div>
+                                <div class="video-caption">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                    <span>Hiring Campaign</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performance-metrics">
+                            <h4 class="metrics-heading">📊 Performance Metrics</h4>
+                            <div class="metrics-grid">
+                                <div class="metric-card" onclick="openLightboxFromMetric(this.querySelector('img'))"><img src="./UDC IG Followers.PNG" alt="Instagram Followers Growth"></div>
+                                <div class="metric-card" onclick="openLightboxFromMetric(this.querySelector('img'))"><img src="./UDC IG Reached.PNG" alt="Instagram Reach"></div>
+                                <div class="metric-card" onclick="openLightboxFromMetric(this.querySelector('img'))"><img src="./UDC IG Views.PNG" alt="Instagram Views"></div>
+                                <div class="metric-card" onclick="openLightboxFromMetric(this.querySelector('img'))"><img src="./UDC TikTok Analytics.PNG" alt="TikTok Analytics"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-photos-stack">
+                        <div class="panel-photo-stacked"><img src="./model_picture_two.jpg" alt="Model main"></div>
+                        <div class="panel-photo-stacked"><img src="./model_picture_2.jpg" alt="Class"></div>
+                        <div class="panel-photo-stacked"><img src="./model_picture_1.jpg" alt="Details"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -997,7 +1365,15 @@
             <div class="panel-inner">
                 <div class="panel-text">
                     <h3>Unholy Donuts</h3>
-                    <p class="panel-company">Toronto &middot; May 2023 – Dec 2023</p>
+                    <p class="panel-company">Toronto &middot; Oct 2022 – Dec 2023</p>
+                    <div class="panel-social-links">
+                        <a href="https://www.instagram.com/unholydonutscanada/?hl=en" target="_blank" rel="noopener noreferrer" class="panel-social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @unholydonutscanada
+                        </a>
+                    </div>
                     <ul class="panel-bullets">
                         <li>Managed full social media presence: content calendar, shooting, editing &amp; posting.</li>
                         <li>Produced short-form video for TikTok &amp; Instagram Reels showcasing product launches.</li>
@@ -1006,41 +1382,90 @@
                     </ul>
                     <p class="media-label">Media files</p>
                     <div class="sub-folders">
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Reels &amp; TikToks</span></div>
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Product shots</span></div>
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">BTS video</span></div>
+                        <div class="sub-folder" onclick="openModal('donutReelsModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Reels &amp; TikToks</span></div>
+                        <div class="sub-folder" onclick="openModal('donutProductModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Product shots</span></div>
                     </div>
                 </div>
-                <div class="panel-photos">
-                    <div class="panel-photo"><img src="./Donut1.JPG" alt="Donuts"></div>
-                    <div class="panel-photo"><img src="./matchadonut.jpg" alt="Matcha Donut"></div>
-                    <div class="panel-photo"><img src="./sprinkle_donut.jpg" alt="Sprinkle Donut"></div>
-                    <div class="panel-photo"><img src="./donut3.jpg" alt="Donut 3"></div>
-                    <div class="panel-photo"><img src="./matcha_donut_2.jpg" alt="Matcha Donut 2"></div>
-                    <div class="panel-photo"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581123/pumpkin_donut_pqcl9o.mov" autoplay muted loop playsinline poster="./donut3.jpg"></video></div>
+                <div class="panel-photos-split">
+                    <div class="panel-videos-group">
+                        <div class="video-container">
+                            <div class="panel-photo-large">
+                                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581997/Creme_Brulee_Donut_ohxhko.mp4" autoplay muted loop playsinline></video>
+                            </div>
+                            <div class="video-caption">
+                                <svg viewBox="0 0 448 512" fill="currentColor">
+                                    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+                                </svg>
+                                <span>In-House Content - 323k Views</span>
+                            </div>
+                        </div>
+                        <div class="video-container">
+                            <div class="panel-photo-large">
+                                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772655174/Unholy_Influencer_2_z2oiwa.mp4" autoplay muted loop playsinline></video>
+                            </div>
+                            <div class="video-caption">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                <span>Influencer Marketing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-photos-stack">
+                        <div class="panel-photo-stacked"><img src="./Donut1.JPG" alt="Donuts"></div>
+                        <div class="panel-photo-stacked"><img src="./donut3.jpg" alt="Donut 3"></div>
+                        <div class="panel-photo-stacked"><img src="./matcha_donut_2.jpg" alt="Matcha Donut 2"></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="exp-folder-panel" id="panel-3">
             <div class="panel-inner">
                 <div class="panel-text">
-                    <h3>Freelance Work</h3>
-                    <p class="panel-company">Various clients &middot; 2022 – Present</p>
+                    <h3>Freelance Work and Personal Content</h3>
+                    <p class="panel-company">Various Clients &middot; 2022 – Present</p>
                     <ul class="panel-bullets">
                         <li>Delivered social media strategy and content creation for clients across lifestyle, events &amp; hospitality.</li>
                         <li>Managed end-to-end campaigns: briefing, creative direction, production, scheduling &amp; reporting.</li>
-                        <li>Produced event promotional content, brand graphics, and short-form video.</li>
+                        <li>Produced promotional content including graphics, announcements, and ticket sales campaigns.</li>
+                        <li>Created featured content showcasing performances, events, and brand highlights.</li>
                     </ul>
                     <p class="media-label">Media files</p>
                     <div class="sub-folders">
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Campaign videos</span></div>
-                        <div class="sub-folder"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Analytics</span></div>
+                        <div class="sub-folder" onclick="openModal('freelanceEventModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Event content</span></div>
+                        <div class="sub-folder" onclick="openModal('freelancePromosModal')"><div class="sf-icon"><div class="sf-tab"></div><div class="sf-body"><div class="sf-lines"><div class="sf-line"></div><div class="sf-line"></div></div></div></div><span class="sub-folder-name">Personal Content</span></div>
                     </div>
                 </div>
-                <div class="panel-photos">
-                    <div class="panel-photo"><img src="./instagram_page_overview.PNG" alt="Instagram Overview"></div>
-                    <div class="panel-photo"><img src="./model_picture_1.jpg" alt="Content"></div>
-                    <div class="panel-photo"><img src="./Donut1.JPG" alt="Content 3"></div>
+                <div class="panel-photos-split">
+                    <div class="panel-videos-group">
+                        <div class="video-container">
+                            <div class="panel-photo-large">
+                                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772662676/Moving_Series_Ep.1_bdqpoe.mov" autoplay muted loop playsinline></video>
+                            </div>
+                            <div class="video-caption">
+                                <svg viewBox="0 0 448 512" fill="currentColor">
+                                    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+                                </svg>
+                                <span>Moving Series - 8k Views</span>
+                            </div>
+                        </div>
+                        <div class="video-container">
+                            <div class="panel-photo-large">
+                                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772662774/Personal_35k_Views_mfcyps.mp4" autoplay muted loop playsinline></video>
+                            </div>
+                            <div class="video-caption">
+                                <svg viewBox="0 0 448 512" fill="currentColor">
+                                    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+                                </svg>
+                                <span>Personal Content - 35k Views</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-photos-stack">
+                        <div class="panel-photo-stacked"><img src="./Featured Choreos.jpeg" alt="Featured Choreos"></div>
+                        <div class="panel-photo-stacked"><img src="./Teaser_Grid.jpg" alt="Teaser"></div>
+                        <div class="panel-photo-stacked"><img src="./TicketsforSale_Grid.jpeg" alt="Tickets"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1054,60 +1479,150 @@
         <h2 class="section-heading">Gallery <strong>&amp; Portfolio</strong></h2>
         <div class="gallery-tabs">
             <button class="gallery-tab active" data-category="all">All Work</button>
-            <button class="gallery-tab" data-category="dance">Dance Studio</button>
-            <button class="gallery-tab" data-category="food">Food Content</button>
+            <button class="gallery-tab" data-category="videos">Short-Form Content</button>
+            <button class="gallery-tab" data-category="images">Images</button>
         </div>
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- UDEC Pictures -->
-            <div class="gallery-item fade-in" data-category="dance" data-index="0">
+        <div class="gallery-wrapper">
+            <button class="gallery-nav gallery-nav-prev" id="galleryPrev">‹</button>
+            <button class="gallery-nav gallery-nav-next" id="galleryNext">›</button>
+            <div class="gallery-grid" id="galleryGrid">
+            <!-- Videos - Dance Centre First -->
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="0">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581782/Merchandise_Launch_Video_rx9641.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Dance Centre - Merch Launch</p>
+                </div>
+            </div>
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="1">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581776/Hiring_Videographers_ggjhbz.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Dance Centre - Hiring</p>
+                </div>
+            </div>
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="2">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772582787/Mother_s_Day_k4qm9o.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Dance Centre - Mother's Day</p>
+                </div>
+            </div>
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="3">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772582786/G-Force_Collab_autgnx.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Dance Centre - G-Force Collab</p>
+                </div>
+            </div>
+            <!-- Videos - Unholy Donuts -->
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="4">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772655174/Unholy_Influencer_apgwhx.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Unholy Donuts - Influencer</p>
+                </div>
+            </div>
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="5">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772582118/Chocolate_Donut_zljr04.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Unholy Donuts - Chocolate</p>
+                </div>
+            </div>
+            <div class="gallery-item video-item fade-in" data-category="videos" data-index="6">
+                <video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772582030/Pistachio_Instagram_ccakbv.mp4" autoplay muted loop playsinline></video>
+                <div class="gallery-item-overlay">
+                    <p>Unholy Donuts - Pistachio</p>
+                </div>
+            </div>
+            <!-- Images - UDEC -->
+            <div class="gallery-item fade-in" data-category="images" data-index="7">
                 <img src="model_picture_1.jpg" alt="Underground Dance Centre - Model Photography 1">
                 <div class="gallery-item-overlay">
                     <p>Underground Dance Centre</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="dance" data-index="1">
+            <div class="gallery-item fade-in" data-category="images" data-index="8">
                 <img src="model_picture_2.jpg" alt="Underground Dance Centre - Model Photography 2">
                 <div class="gallery-item-overlay">
                     <p>Underground Dance Centre</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="dance" data-index="2">
+            <div class="gallery-item fade-in" data-category="images" data-index="9">
                 <img src="model_picture_two.jpg" alt="Underground Dance Centre - Model Photography 3">
                 <div class="gallery-item-overlay">
                     <p>Underground Dance Centre</p>
                 </div>
             </div>
-            <!-- Donut Pictures -->
-            <div class="gallery-item fade-in" data-category="food" data-index="3">
+            <!-- Images - Donuts -->
+            <div class="gallery-item fade-in" data-category="images" data-index="10">
                 <img src="Donut1.JPG" alt="Unholy Donuts - Content Creation 1">
                 <div class="gallery-item-overlay">
                     <p>Unholy Donuts</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="4">
+            <div class="gallery-item fade-in" data-category="images" data-index="11">
                 <img src="matchadonut.jpg" alt="Matcha Donut Photography">
                 <div class="gallery-item-overlay">
                     <p>Product Photography</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="5">
+            <div class="gallery-item fade-in" data-category="images" data-index="12">
                 <img src="sprinkle_donut.jpg" alt="Sprinkle Donut Content">
                 <div class="gallery-item-overlay">
                     <p>Brand Content</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="6">
+            <div class="gallery-item fade-in" data-category="images" data-index="13">
                 <img src="donut3.jpg" alt="Donut Photography 3">
                 <div class="gallery-item-overlay">
                     <p>Food Content</p>
                 </div>
             </div>
-            <div class="gallery-item fade-in" data-category="food" data-index="7">
+            <div class="gallery-item fade-in" data-category="images" data-index="14">
                 <img src="matcha_donut_2.jpg" alt="Matcha Donut 2">
                 <div class="gallery-item-overlay">
                     <p>Visual Content</p>
                 </div>
             </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="15">
+                <img src="Course 1.jpg" alt="Course Campaign 1">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="16">
+                <img src="Course 2.jpg" alt="Course Campaign 2">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="17">
+                <img src="Course 3.jpg" alt="Course Campaign 3">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="18">
+                <img src="Course 4.jpg" alt="Course Campaign 4">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="19">
+                <img src="Course 5.jpg" alt="Course Campaign 5">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="20">
+                <img src="Course 6.jpg" alt="Course Campaign 6">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+            <div class="gallery-item fade-in" data-category="images" data-index="21">
+                <img src="Course 7.jpg" alt="Course Campaign 7">
+                <div class="gallery-item-overlay">
+                    <p>Course Campaign</p>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </section>
@@ -1118,7 +1633,146 @@
         <button class="lightbox-close" id="lightboxClose">&times;</button>
         <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
         <img src="" alt="" id="lightboxImg">
+        <video src="" id="lightboxVideo" controls loop playsinline></video>
         <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+    </div>
+</div>
+
+<!-- Folder Modals -->
+<!-- TikTok Clips Modal -->
+<div class="folder-modal" id="tiktokModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('tiktokModal')">&times;</button>
+        <div class="modal-header">
+            <h3>TikTok Clips</h3>
+        </div>
+        <div class="modal-gallery videos">
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772659370/UDC_TikTok_14k_Views_puafiq.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772659370/UDC_TikTok_6k_Views_kj6vfc.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772661970/UDC_TikTok_4k_Views_y3pzok.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772661971/UDC_TikTok_8k_V_iews_veyyqb.mp4" controls loop playsinline autoplay muted></video></div>
+        </div>
+    </div>
+</div>
+
+<!-- Course Campaign Modal -->
+<div class="folder-modal" id="campaignModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('campaignModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Course Campaign</h3>
+        </div>
+        <div class="modal-gallery images">
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772666062/AD_teachers_general_program_v1_pvtnmd.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><img src="./Course 1.jpg" alt="Course 1" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Course 2.jpg" alt="Course 2" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Course 3.jpg" alt="Course 3" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Course 4.jpg" alt="Course 4" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Course 5.jpg" alt="Course 5" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Course 6.jpg" alt="Course 6" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Course 7.jpg" alt="Course 7" onclick="openLightboxFromModal(this)"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Merch Shoot Modal -->
+<div class="folder-modal" id="merchModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('merchModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Merch Shoot</h3>
+        </div>
+        <div class="modal-gallery images">
+            <div class="modal-item"><img src="./Merch 1.jpg" alt="Merch Shoot 1" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Merch 2.jpg" alt="Merch Shoot 2" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Merch 3.jpg" alt="Merch Shoot 3" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Merch 4.jpg" alt="Merch Shoot 4" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Merch 5.jpg" alt="Merch Shoot 5" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Merch 6.jpg" alt="Merch Shoot 6" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Merch 7.jpg" alt="Merch Shoot 7" onclick="openLightboxFromModal(this)"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Unholy Donuts Reels & TikToks Modal -->
+<div class="folder-modal" id="donutReelsModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('donutReelsModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Reels &amp; TikToks</h3>
+        </div>
+        <div class="modal-gallery videos">
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772581997/Creme_Brulee_Donut_ohxhko.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772655174/Unholy_Influencer_2_z2oiwa.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772655174/Unholy_Influencer_apgwhx.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772582118/Chocolate_Donut_zljr04.mp4" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772582030/Pistachio_Instagram_ccakbv.mp4" controls loop playsinline autoplay muted></video></div>
+        </div>
+    </div>
+</div>
+
+<!-- Unholy Donuts Product Shots Modal -->
+<div class="folder-modal" id="donutProductModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('donutProductModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Product Shots</h3>
+        </div>
+        <div class="modal-gallery images">
+            <div class="modal-item"><img src="./Donut1.JPG" alt="Donut 1" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./matchadonut.jpg" alt="Matcha Donut" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./sprinkle_donut.jpg" alt="Sprinkle Donut" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./donut3.jpg" alt="Donut 3" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./matcha_donut_2.jpg" alt="Matcha Donut 2" onclick="openLightboxFromModal(this)"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Freelance Campaign Graphics Modal -->
+<div class="folder-modal" id="freelanceCampaignModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('freelanceCampaignModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Campaign Graphics</h3>
+        </div>
+        <div class="modal-gallery images">
+            <div class="modal-item"><img src="./Announcement_Grid.jpeg" alt="Announcement" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Featured Choreos.jpeg" alt="Featured Choreos" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Teaser_Grid.jpg" alt="Teaser" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./TicketsforSale_Grid.jpeg" alt="Tickets" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./30for30_Grid.jpeg" alt="30 for 30" onclick="openLightboxFromModal(this)"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Freelance Event Content Modal -->
+<div class="folder-modal" id="freelanceEventModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('freelanceEventModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Event Content</h3>
+        </div>
+        <div class="modal-gallery images">
+            <div class="modal-item"><img src="./Announcement_Grid.jpeg" alt="Announcement" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Featured Choreos.jpeg" alt="Featured Choreos" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./Teaser_Grid.jpg" alt="Teaser" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./TicketsforSale_Grid.jpeg" alt="Tickets" onclick="openLightboxFromModal(this)"></div>
+            <div class="modal-item"><img src="./30for30_Grid.jpeg" alt="30 for 30" onclick="openLightboxFromModal(this)"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Freelance Promotions Modal -->
+<div class="folder-modal" id="freelancePromosModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('freelancePromosModal')">&times;</button>
+        <div class="modal-header">
+            <h3>Personal Content</h3>
+        </div>
+        <div class="modal-gallery videos">
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772662676/Moving_Series_Ep.1_bdqpoe.mov" controls loop playsinline autoplay muted></video></div>
+            <div class="modal-item"><video src="https://res.cloudinary.com/dh1wa7cyx/video/upload/v1772662774/Personal_35k_Views_mfcyps.mp4" controls loop playsinline autoplay muted></video></div>
+        </div>
     </div>
 </div>
 
@@ -1263,6 +1917,87 @@
 </footer>
 
 <script>
+    // ── Modal Functions ──
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Auto-play first video if modal contains videos
+        const firstVideo = modal.querySelector('video');
+        if (firstVideo) {
+            firstVideo.play().catch(err => console.log('Video autoplay failed:', err));
+        }
+    }
+    
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        
+        // Pause all videos in the modal
+        const videos = modal.querySelectorAll('video');
+        videos.forEach(video => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    }
+    
+    function openLightboxFromModal(imgElement) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxVideo = document.getElementById('lightboxVideo');
+        
+        // Reset both elements
+        lightboxImg.classList.remove('active');
+        lightboxVideo.classList.remove('active');
+        lightboxVideo.pause();
+        
+        // Show image
+        lightboxImg.src = imgElement.src;
+        lightboxImg.alt = imgElement.alt;
+        lightboxImg.classList.add('active');
+        
+        lightbox.classList.add('active');
+    }
+    
+    function openLightboxFromMetric(imgElement) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxVideo = document.getElementById('lightboxVideo');
+        
+        // Reset both elements
+        lightboxImg.classList.remove('active');
+        lightboxVideo.classList.remove('active');
+        lightboxVideo.pause();
+        
+        // Show image
+        lightboxImg.src = imgElement.src;
+        lightboxImg.alt = imgElement.alt;
+        lightboxImg.classList.add('active');
+        
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Close modals on background click
+    document.querySelectorAll('.folder-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal.id);
+            }
+        });
+    });
+    
+    // Close modals with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.folder-modal.active').forEach(modal => {
+                closeModal(modal.id);
+            });
+        }
+    });
+    
     // ── Folder toggle ──
     function toggleFolder(id) {
         const folder = document.getElementById('folder-' + id);
@@ -1321,6 +2056,7 @@
     // Lightbox Functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxVideo = document.getElementById('lightboxVideo');
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
@@ -1339,15 +2075,33 @@
         currentImageIndex = index;
         const item = visibleImages[currentImageIndex];
         const img = item.querySelector('img');
+        const video = item.querySelector('video');
         
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
+        // Reset both elements
+        lightboxImg.classList.remove('active');
+        lightboxVideo.classList.remove('active');
+        lightboxVideo.pause();
+        
+        if (video) {
+            // Show video
+            lightboxVideo.src = video.src;
+            lightboxVideo.classList.add('active');
+            lightboxVideo.play();
+        } else if (img) {
+            // Show image
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxImg.classList.add('active');
+        }
+        
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
     
     function closeLightbox() {
         lightbox.classList.remove('active');
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
         document.body.style.overflow = 'auto';
     }
     
@@ -1394,6 +2148,41 @@
     galleryItems.forEach(item => {
         item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     });
+
+    // ── Gallery Navigation ──
+    const galleryGrid = document.getElementById('galleryGrid');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    
+    function scrollGallery(direction) {
+        const scrollAmount = galleryGrid.offsetWidth;
+        if (direction === 'prev') {
+            galleryGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            galleryGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+    
+    galleryPrev.addEventListener('click', () => scrollGallery('prev'));
+    galleryNext.addEventListener('click', () => scrollGallery('next'));
+    
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    galleryGrid.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    galleryGrid.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) scrollGallery('next');
+        if (touchEndX > touchStartX + 50) scrollGallery('prev');
+    }
 </script>
 
 </body>
